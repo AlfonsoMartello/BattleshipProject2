@@ -19,6 +19,7 @@ public class ShipController : MonoBehaviour
     public int shipLength = 0;
     public int shipTeam = 0;
     public GameObject shipPart;
+    float EPSILON = 0.05f;
 
     /**
     * @pre Start is called before the first frame update
@@ -140,8 +141,10 @@ public class ShipController : MonoBehaviour
         if (isMoving)
         {
             partCheck = true;
+            bool overBoard = true;
             foreach (ShipPartController part in parts)
             {
+                overBoard = (part.bondTarget != null) && overBoard;
                 part.rend.sortingLayerName = "Moving";
                 if (!part.partReadyToPair)
                 {
@@ -153,12 +156,16 @@ public class ShipController : MonoBehaviour
                     part.rend.color = Color.green;
                 }
             }
+            if (overBoard && ((System.Math.Abs(Input.GetAxis("Mouse X")) < EPSILON) || (System.Math.Abs(Input.GetAxis("Mouse Y")) < EPSILON)))
+            {
+                foreach (ShipPartController part in parts)
+                {
+                    part.transform.position = new Vector3(part.bondTarget.transform.position.x,
+                                                          part.bondTarget.transform.position.y,
+                                                          8);
+                }
+            }
         }
-        else
-        {
-            
-        }
-        
     }
 
     /**
@@ -222,7 +229,7 @@ public class ShipController : MonoBehaviour
     public void AttemptBond()
     {
         if (partCheck)
-        {
+        {   
             shipReadyToPair = true;
             foreach (ShipPartController part in parts)
             {
@@ -245,20 +252,4 @@ public class ShipController : MonoBehaviour
             part.rend.color = Color.white;
         }
     }
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
