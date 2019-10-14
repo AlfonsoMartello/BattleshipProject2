@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 /**
 *  @class description: CanvasScript Contains all game transisitions from main menu, to ship placement menu, to main game interactions.
@@ -21,6 +23,7 @@ public class CanvasScript : MonoBehaviour
     public TeamController Team2;
     public BoardInteraction BattleshipBoard;
     bool showShips = false;
+    bool gameOver = false;
 
     /**
     * @pre Start is called before the first frame update.
@@ -86,17 +89,21 @@ public class CanvasScript : MonoBehaviour
         }
 
 
-        if (Team1.loseCheck == true || Team2.loseCheck == true)
+        if ((Team1.loseCheck == true || Team2.loseCheck == true) && !gameOver)
         {
             if (Team1.loseCheck == true)
             {
                 player1WinMessage.SetActive(false);
                 player2WinMessage.SetActive(true);
+                Debug.Log("Player 2 Score: " + BattleshipBoard.player2Shots / Team2.numberOfShips);
+                WriteScoreToFile(BattleshipBoard.player2Shots);
             }
             else if (Team2.loseCheck == true)
             {
                 player1WinMessage.SetActive(true);
                 player2WinMessage.SetActive(false);
+                Debug.Log("Player 1 Score: " + BattleshipBoard.player1Shots / Team1.numberOfShips);
+                WriteScoreToFile(BattleshipBoard.player1Shots);
             }
 
             shipSelectorPanel.SetActive(false);
@@ -105,6 +112,7 @@ public class CanvasScript : MonoBehaviour
             switchPanel.SetActive(false);
             pauseMenu.SetActive(false);
             gameOverMenu.SetActive(true);
+            gameOver = true;
         }
     }
 
@@ -365,5 +373,27 @@ public class CanvasScript : MonoBehaviour
     {
         Debug.Log("EXIT THE GAME! BYE!!");
         Application.Quit();
+    }
+
+    private void WriteScoreToFile(int score)
+    {
+        ScoreData scoreData = new ScoreData();
+        BinaryFormatter bf = new BinaryFormatter();
+        if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+        {
+            FileStream readFile = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
+            scoreData = (ScoreData)bf.Deserialize(readFile);
+            readFile.Close();
+        }
+
+        scoreData.AddScoreByNumShips(Team1.numberOfShips, score);
+        FileStream writeFile = File.Create(Application.persistentDataPath + "/savedGames.gd");
+        bf.Serialize(writeFile, scoreData);
+        writeFile.Close();
+
+        foreach (int a in scoreData.GetScoresByNumShips(1))
+        {
+            Debug.Log("1 Ship: " + a);
+        }
     }
 }
