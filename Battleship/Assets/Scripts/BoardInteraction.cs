@@ -44,7 +44,7 @@ public class BoardInteraction : MonoBehaviour
     */
     public void BattleshipSpacesBoard1(int num)
     {
-        if (player1Turn)
+        if (player1Turn) //Actually player 2's turn
         {
             for(int i = 0; i < spacesAvailableBoard1.Length; i++)
             {
@@ -128,14 +128,14 @@ public class BoardInteraction : MonoBehaviour
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
         
-        if (player1Turn)
+        if (player1Turn) //actually player 2 turn
         {
             for (int i = 0; i < spacesAvailableBoard1.Length; i++)
             {
 
-                if (spacesAvailableBoard1[i].image.sprite == onClickIcons[2])
+                if (spacesAvailableBoard1[i].image.sprite == onClickIcons[2]) //checks for hit
                 {
-                    if(spacesAvailableBoard1[i].GetComponent<buttonController>().target == null)
+                    if(spacesAvailableBoard1[i].GetComponent<buttonController>().target == null) //if the selected button does not contain a ship part. target is an instance of ShipPartController.
                     {
                          spacesAvailableBoard1[i].image.sprite = onClickIcons[0]
 ;                        hasPlayed1 = true;
@@ -143,7 +143,7 @@ public class BoardInteraction : MonoBehaviour
 
                     else
                     {
-                        spacesAvailableBoard1[i].GetComponent<buttonController>().target.Hit();
+                        spacesAvailableBoard1[i].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                         spacesAvailableBoard1[i].image.sprite = onClickIcons[1];
                         hasPlayed1 = true;
                     }
@@ -151,7 +151,7 @@ public class BoardInteraction : MonoBehaviour
                 }
             }
 
-            for (int i = 0; i < spacesAvailableBoard1.Length; i++)
+            for (int i = 0; i < spacesAvailableBoard1.Length; i++) //sets up next player's turn
             {
                 if (hasPlayed1)
                 {
@@ -170,7 +170,7 @@ public class BoardInteraction : MonoBehaviour
                 }
             }
 
-            if(hasPlayed1)
+            if(hasPlayed1) //changes player turn panel text and interaction. Prevents other panels from appearing. Shows switch panel string. The "Continue" button (not in this script) changes viewed panel.
             {
                 player1Turn = false;
                 player1Board.GetComponent<Image>().enabled = false;
@@ -194,7 +194,7 @@ public class BoardInteraction : MonoBehaviour
             }
         }
 
-        else if (player2Turn)
+        else if (player2Turn) //actually player 1 turn
         {
             for (int i = 0; i < spacesAvailableBoard2.Length; i++)
             {
@@ -280,7 +280,7 @@ public class BoardInteraction : MonoBehaviour
     /**
     * @pre: A player presses the 'Start' button after setting their ships.
     * @post: Sets Player1's board to interactive and Player2's board to NOT be interactive,
-    * forcing whoever is playing as Player1 to go first. This also sets the buttons' sprites to nothing.
+    * forcing whoever is playing as Player2 to go first. This also sets the buttons' sprites to nothing.
     * @param: None.
     * @return: None.
     */

@@ -50,8 +50,8 @@ public class buttonController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log("Something touching the board");
-        if (collision.gameObject.GetComponent<ShipPartController>().partTeam == buttonTeam
-            && collision.gameObject.GetComponent<ShipPartController>().parent.shipReadyToPair)
+        if (collision.gameObject.GetComponent<ShipPartController>().partTeam == buttonTeam //must be in own board
+            && collision.gameObject.GetComponent<ShipPartController>().parent.shipReadyToPair) //
         {
             Debug.Log(collision);
             target = collision.gameObject.GetComponent<ShipPartController>();

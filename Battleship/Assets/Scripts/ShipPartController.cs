@@ -113,7 +113,7 @@ public class ShipPartController : MonoBehaviour
      * @param Collider2D collision
      * @return None
      */
-    private void OnTriggerEnter2D (Collider2D collision)
+    private void OnTriggerEnter2D (Collider2D collision)  //colliders of buttons and of ship are connected. Collider is the button collider, so checks if their is already a ship places w/ help from OnTriggerStay2D in buttonController.
     {
         if (collision.tag == "Open")
         {

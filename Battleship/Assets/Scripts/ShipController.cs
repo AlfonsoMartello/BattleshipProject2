@@ -143,7 +143,7 @@ public class ShipController : MonoBehaviour
             foreach (ShipPartController part in parts)
             {
                 part.rend.sortingLayerName = "Moving";
-                if (!part.partReadyToPair)
+                if (!part.partReadyToPair) //from OnTriggerEnter2D
                 {
                     partCheck = false;
                     part.rend.color = Color.red;
