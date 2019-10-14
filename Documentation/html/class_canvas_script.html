@@ -152,6 +152,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a9e6d678110b751c80de5bf0960a5ddcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21183a8b86e8d5553b0e4999060ff22f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_script.html#a21183a8b86e8d5553b0e4999060ff22f">ResumeGame</a> ()</td></tr>
 <tr class="separator:a21183a8b86e8d5553b0e4999060ff22f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ba901e13b61d1cfcd274addd568815e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_script.html#a4ba901e13b61d1cfcd274addd568815e">WriteScoreToFile</a> (int score, string playerName)</td></tr>
+<tr class="separator:a4ba901e13b61d1cfcd274addd568815e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -213,6 +215,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1e17bf6e7fc6c7785e546956beb1e7aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab212a3753824e9670b69c1d222734257"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_script.html#ab212a3753824e9670b69c1d222734257">showShips</a> = false</td></tr>
 <tr class="separator:ab212a3753824e9670b69c1d222734257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3fe6ed683b41ee379d0934688673a3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_script.html#ab3fe6ed683b41ee379d0934688673a3f">gameOver</a> = false</td></tr>
+<tr class="separator:ab3fe6ed683b41ee379d0934688673a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae4c121496f0ba331fe52d139725bd8d3"></a>
@@ -455,7 +459,7 @@ PlayersAreSwitched Method will listen for the Continue Button onClick event. </d
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>QuitGame method wil listen for an onClick event from either the Quit Button or the Main Menu Button. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>QuitGame method wil listen for an onClick event from either the <a class="el" href="class_quit.html">Quit</a> Button or the Main Menu Button. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>QuitGame method will set the Confirm Selection Panel, from here the user will provide confirmation to call GameReset. </dd>
 <dd>
 Clicking the No button will return the user back to the pause menu. </dd></dl>
@@ -722,6 +726,51 @@ Once A player loses, the Game Over Screen will pop up. </dd></dl>
 
 </div>
 </div>
+<a id="a4ba901e13b61d1cfcd274addd568815e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ba901e13b61d1cfcd274addd568815e">&#9670;&nbsp;</a></span>WriteScoreToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CanvasScript.WriteScoreToFile </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>score</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>playerName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section pre"><dt>Precondition</dt><dd>Game has ended </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Add current game's score data to the 'savedGames.gd' file </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>score of the winner, string name of player who won </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="ae0ed1750467998a563766e94b0913a98"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae0ed1750467998a563766e94b0913a98">&#9670;&nbsp;</a></span>BattleshipBoard</h2>
@@ -850,6 +899,28 @@ Once A player loses, the Game Over Screen will pop up. </dd></dl>
       <table class="memname">
         <tr>
           <td class="memname">GameObject CanvasScript.gameController</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3fe6ed683b41ee379d0934688673a3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3fe6ed683b41ee379d0934688673a3f">&#9670;&nbsp;</a></span>gameOver</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CanvasScript.gameOver = false</td>
         </tr>
       </table>
   </td>

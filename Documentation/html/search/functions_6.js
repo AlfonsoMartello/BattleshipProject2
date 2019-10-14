@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['hit_162',['Hit',['../class_ship_part_controller.html#a78fb913c2aba0151fb9dbabde78d9d7e',1,'ShipPartController']]],
-  ['hitcheck_163',['hitCheck',['../class_ship_controller.html#ad2ef31f253c2f3f7dc4c89ff747682f5',1,'ShipController']]]
+  ['gamereset_182',['GameReset',['../class_canvas_script.html#a494f3b3939e2e0d572c8859c4e853800',1,'CanvasScript']]],
+  ['getscoresbynumships_183',['GetScoresByNumShips',['../class_score_data.html#ac1dc8ddd9c286faf63314bcfba624ee7',1,'ScoreData']]]
 ];

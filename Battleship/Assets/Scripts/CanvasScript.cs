@@ -369,12 +369,13 @@ public class CanvasScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void ExitGame()
-    {
-        Debug.Log("EXIT THE GAME! BYE!!");
-        Application.Quit();
-    }
 
+    /**
+    * @pre Game has ended
+    * @post Add current game's score data to the 'savedGames.gd' file
+    * @param int score of the winner, string name of player who won
+    * @return None.
+    */
     private void WriteScoreToFile(int score, string playerName)
     {
         ScoreData scoreData = new ScoreData();
