@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mainmenubutton_48',['mainMenuButton',['../class_canvas_script.html#a3aa32b1e724a38f602fcc2454b12218c',1,'CanvasScript']]]
+  ['losecheck_48',['loseCheck',['../class_team_controller.html#a92fe094edc405b965e4f071618473649',1,'TeamController']]]
 ];

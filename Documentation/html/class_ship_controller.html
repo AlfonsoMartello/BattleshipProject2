@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Battleship: Team Crossover Edition: ShipController Class Reference</title>
+<title>KRAAG Project 2: ShipController Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,11 +28,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Logo-Battleship-2.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Battleship: Team Crossover Edition
+   <div id="projectname">KRAAG Project 2
    </div>
-   <div id="projectbrief">Team Crossover&#39;s implementation of EECS448 project 1.</div>
   </td>
  </tr>
  </tbody>
@@ -100,22 +98,9 @@ $(document).ready(function(){initNavTree('class_ship_controller.html','');});
 <div class="dynheader">
 Inheritance diagram for ShipController:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_ship_controller__inherit__graph.png" border="0" usemap="#_ship_controller_inherit__map" alt="Inheritance graph"/></div>
-<map name="_ship_controller_inherit__map" id="_ship_controller_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,131,139,545"/>
-<area shape="rect" title=" " alt="" coords="17,5,127,83"/>
-</map>
-</div>
-<div class="dynheader">
-Collaboration diagram for ShipController:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller__coll__graph.png" border="0" usemap="#_ship_controller_coll__map" alt="Collaboration graph"/></div>
-<map name="_ship_controller_coll__map" id="_ship_controller_coll__map">
-<area shape="rect" title=" " alt="" coords="5,477,139,877"/>
-<area shape="rect" title=" " alt="" coords="31,5,142,83"/>
-<area shape="rect" href="class_team_controller.html" title=" " alt="" coords="89,132,242,415"/>
-</map>
-</div>
+ <div class="center">
+  <img src="class_ship_controller.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -169,6 +154,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a641a1b21c56f43f5fc6a2ecff721e27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8715cd4a281f304b57a19562abb43b20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#a8715cd4a281f304b57a19562abb43b20">Spawn</a> ()</td></tr>
 <tr class="separator:a8715cd4a281f304b57a19562abb43b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ef712325201d1375678c0bb28ba1f5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#a8ef712325201d1375678c0bb28ba1f5c">snapToGrid</a> ()</td></tr>
+<tr class="separator:a8ef712325201d1375678c0bb28ba1f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -178,6 +165,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:af60607db529794559ae827bb60ece0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf774cac6da1a16ea8eeb741abdc1f59"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#aaf774cac6da1a16ea8eeb741abdc1f59">partCheck</a> = false</td></tr>
 <tr class="separator:aaf774cac6da1a16ea8eeb741abdc1f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af23aa9c3b4d7f5b28c5798b453d1dc8f"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#af23aa9c3b4d7f5b28c5798b453d1dc8f">EPSILON</a> = 0.01f</td></tr>
+<tr class="separator:af23aa9c3b4d7f5b28c5798b453d1dc8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a91965bca38605ac7f926701d79feab2f"></a>
@@ -185,6 +174,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.appear </td>
@@ -193,6 +185,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship must exist - assumes ship part is not visible </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Renders the ship part. </dd></dl>
@@ -211,6 +208,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.AttemptBond </td>
@@ -219,6 +219,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship was placed with mouse on board. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Attempts to bond the ship to the game board in valid location </dd></dl>
@@ -229,24 +234,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_a264aa9f5b5210ddf3a96622b6c004e8a_cgraph.png" border="0" usemap="#class_ship_controller_a264aa9f5b5210ddf3a96622b6c004e8a_cgraph" alt=""/></div>
-<map name="class_ship_controller_a264aa9f5b5210ddf3a96622b6c004e8a_cgraph" id="class_ship_controller_a264aa9f5b5210ddf3a96622b6c004e8a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,188,32"/>
-<area shape="rect" href="class_team_controller.html#a8925fcd8302d75835179cc9e48efb272" title=" " alt="" coords="236,5,447,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_a264aa9f5b5210ddf3a96622b6c004e8a_icgraph.png" border="0" usemap="#class_ship_controller_a264aa9f5b5210ddf3a96622b6c004e8a_icgraph" alt=""/></div>
-<map name="class_ship_controller_a264aa9f5b5210ddf3a96622b6c004e8a_icgraph" id="class_ship_controller_a264aa9f5b5210ddf3a96622b6c004e8a_icgraph">
-<area shape="rect" title=" " alt="" coords="256,5,439,32"/>
-<area shape="rect" href="class_ship_part_controller.html#af18d6c3e84f02c93b3d1aaf079810d05" title=" " alt="" coords="5,5,208,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -255,6 +242,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.checkParts </td>
@@ -263,6 +253,11 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship must exist </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Checks each part of the ship to see if moving and renders green/red depending on whether or not they're in valid spots. </dd></dl>
@@ -273,15 +268,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_a6dcc27573d0c57fad04008d47c14d5b4_icgraph.png" border="0" usemap="#class_ship_controller_a6dcc27573d0c57fad04008d47c14d5b4_icgraph" alt=""/></div>
-<map name="class_ship_controller_a6dcc27573d0c57fad04008d47c14d5b4_icgraph" id="class_ship_controller_a6dcc27573d0c57fad04008d47c14d5b4_icgraph">
-<area shape="rect" title=" " alt="" coords="201,5,375,32"/>
-<area shape="rect" href="class_ship_controller.html#a641a1b21c56f43f5fc6a2ecff721e27d" title=" " alt="" coords="5,5,153,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -290,6 +276,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.disappear </td>
@@ -298,6 +287,11 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship must exist - assumes thip part is visible </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Disables the ship part rendering to "dissapear the part" </dd></dl>
@@ -316,6 +310,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.FaceDown </td>
@@ -324,6 +321,11 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship must exist </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Rotates the ship to face down </dd></dl>
@@ -334,15 +336,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_a07fd806c2a997f0acfd9f3eb29d35ff6_icgraph.png" border="0" usemap="#class_ship_controller_a07fd806c2a997f0acfd9f3eb29d35ff6_icgraph" alt=""/></div>
-<map name="class_ship_controller_a07fd806c2a997f0acfd9f3eb29d35ff6_icgraph" id="class_ship_controller_a07fd806c2a997f0acfd9f3eb29d35ff6_icgraph">
-<area shape="rect" title=" " alt="" coords="225,5,393,32"/>
-<area shape="rect" href="class_ship_part_controller.html#a9c86b0c439850cdaa0309bb15e8e03ba" title=" " alt="" coords="5,5,177,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -351,6 +344,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.FaceLeft </td>
@@ -359,6 +355,11 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship must exist </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Rotates the ship to face left </dd></dl>
@@ -369,15 +370,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_a5401bbb0e4b36bbc947b703aa3403650_icgraph.png" border="0" usemap="#class_ship_controller_a5401bbb0e4b36bbc947b703aa3403650_icgraph" alt=""/></div>
-<map name="class_ship_controller_a5401bbb0e4b36bbc947b703aa3403650_icgraph" id="class_ship_controller_a5401bbb0e4b36bbc947b703aa3403650_icgraph">
-<area shape="rect" title=" " alt="" coords="225,5,383,32"/>
-<area shape="rect" href="class_ship_part_controller.html#a9c86b0c439850cdaa0309bb15e8e03ba" title=" " alt="" coords="5,5,177,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -386,6 +378,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.FaceRight </td>
@@ -394,6 +389,11 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship nmust exist </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Rotates the ship to face right </dd></dl>
@@ -404,15 +404,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_a25b8cf8d7ffcf88395ad381d2d01d7ae_icgraph.png" border="0" usemap="#class_ship_controller_a25b8cf8d7ffcf88395ad381d2d01d7ae_icgraph" alt=""/></div>
-<map name="class_ship_controller_a25b8cf8d7ffcf88395ad381d2d01d7ae_icgraph" id="class_ship_controller_a25b8cf8d7ffcf88395ad381d2d01d7ae_icgraph">
-<area shape="rect" title=" " alt="" coords="225,5,392,32"/>
-<area shape="rect" href="class_ship_part_controller.html#a9c86b0c439850cdaa0309bb15e8e03ba" title=" " alt="" coords="5,5,177,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -421,6 +412,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.FaceUp </td>
@@ -429,6 +423,11 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship must exist </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Rotates the ship to face up </dd></dl>
@@ -439,15 +438,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_a32d5ba78def3958d175cb0a8f2795564_icgraph.png" border="0" usemap="#class_ship_controller_a32d5ba78def3958d175cb0a8f2795564_icgraph" alt=""/></div>
-<map name="class_ship_controller_a32d5ba78def3958d175cb0a8f2795564_icgraph" id="class_ship_controller_a32d5ba78def3958d175cb0a8f2795564_icgraph">
-<area shape="rect" title=" " alt="" coords="225,5,377,32"/>
-<area shape="rect" href="class_ship_part_controller.html#a9c86b0c439850cdaa0309bb15e8e03ba" title=" " alt="" coords="5,5,177,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -456,6 +446,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.hitCheck </td>
@@ -464,6 +457,11 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship part must exist </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Checks each part of the ship for their individual hit flags, checks for a while destroyed ship, check for all ships lost. </dd></dl>
@@ -474,25 +472,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_ad2ef31f253c2f3f7dc4c89ff747682f5_cgraph.png" border="0" usemap="#class_ship_controller_ad2ef31f253c2f3f7dc4c89ff747682f5_cgraph" alt=""/></div>
-<map name="class_ship_controller_ad2ef31f253c2f3f7dc4c89ff747682f5_cgraph" id="class_ship_controller_ad2ef31f253c2f3f7dc4c89ff747682f5_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,164,32"/>
-<area shape="rect" href="class_team_controller.html#abb2416ff397b999b31bee4c3e3bd18bb" title=" " alt="" coords="212,5,407,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_ad2ef31f253c2f3f7dc4c89ff747682f5_icgraph.png" border="0" usemap="#class_ship_controller_ad2ef31f253c2f3f7dc4c89ff747682f5_icgraph" alt=""/></div>
-<map name="class_ship_controller_ad2ef31f253c2f3f7dc4c89ff747682f5_icgraph" id="class_ship_controller_ad2ef31f253c2f3f7dc4c89ff747682f5_icgraph">
-<area shape="rect" title=" " alt="" coords="423,5,581,32"/>
-<area shape="rect" href="class_ship_part_controller.html#a78fb913c2aba0151fb9dbabde78d9d7e" title=" " alt="" coords="228,5,375,32"/>
-<area shape="rect" href="classbutton_controller.html#aba20adf3d80b729244614cc18d9cfd22" title=" " alt="" coords="5,5,180,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -501,6 +480,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ShipController.SetShipLength </td>
@@ -510,12 +492,51 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>Ship must exist </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Sets ship length. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">int</td><td>n - length of the ship </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+<a id="a8ef712325201d1375678c0bb28ba1f5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ef712325201d1375678c0bb28ba1f5c">&#9670;&nbsp;</a></span>snapToGrid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShipController.snapToGrid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section pre"><dt>Precondition</dt><dd>Ship must exist </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Snaps ship to grid if all parts of the ship are over top of the board </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -541,7 +562,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -554,15 +575,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_a8715cd4a281f304b57a19562abb43b20_icgraph.png" border="0" usemap="#class_ship_controller_a8715cd4a281f304b57a19562abb43b20_icgraph" alt=""/></div>
-<map name="class_ship_controller_a8715cd4a281f304b57a19562abb43b20_icgraph" id="class_ship_controller_a8715cd4a281f304b57a19562abb43b20_icgraph">
-<area shape="rect" title=" " alt="" coords="201,5,348,32"/>
-<area shape="rect" href="class_ship_controller.html#a641a1b21c56f43f5fc6a2ecff721e27d" title=" " alt="" coords="5,5,153,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -584,7 +596,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -618,7 +630,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -631,16 +643,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship_controller_a641a1b21c56f43f5fc6a2ecff721e27d_cgraph.png" border="0" usemap="#class_ship_controller_a641a1b21c56f43f5fc6a2ecff721e27d_cgraph" alt=""/></div>
-<map name="class_ship_controller_a641a1b21c56f43f5fc6a2ecff721e27d_cgraph" id="class_ship_controller_a641a1b21c56f43f5fc6a2ecff721e27d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,153,57"/>
-<area shape="rect" href="class_ship_controller.html#a6dcc27573d0c57fad04008d47c14d5b4" title=" " alt="" coords="201,5,375,32"/>
-<area shape="rect" href="class_ship_controller.html#a8715cd4a281f304b57a19562abb43b20" title=" " alt="" coords="215,56,361,83"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -677,6 +679,28 @@ Here is the call graph for this function:</div>
           <td class="memname">bool ShipController.destoryCheck = false</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af23aa9c3b4d7f5b28c5798b453d1dc8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af23aa9c3b4d7f5b28c5798b453d1dc8f">&#9670;&nbsp;</a></span>EPSILON</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly float ShipController.EPSILON = 0.01f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -838,7 +862,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Fall 2019/EECS448 Software Engineering/BattleshipProject/Battleship/Assets/Scripts/<a class="el" href="_ship_controller_8cs.html">ShipController.cs</a></li>
+<li>Battleship/Assets/Scripts/<a class="el" href="_ship_controller_8cs.html">ShipController.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
