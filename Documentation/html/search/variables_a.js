@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['nobutton_205',['noButton',['../class_canvas_script.html#aacc1ba922d808c6752382794ee0a17d6',1,'CanvasScript']]],
-  ['numberofships_206',['numberOfShips',['../class_team_controller.html#a3a0b05bd37574601bfa02cfa08c99fa0',1,'TeamController']]],
-  ['numships_207',['numShips',['../class_canvas_script.html#aaf2cb0da87e6b51a8b2ad4954a8a2b8f',1,'CanvasScript']]]
+  ['mainmenubutton_208',['mainMenuButton',['../class_canvas_script.html#a3aa32b1e724a38f602fcc2454b12218c',1,'CanvasScript']]]
 ];
