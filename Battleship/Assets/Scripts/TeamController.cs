@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /**
 * 
@@ -15,6 +16,9 @@ public class TeamController : MonoBehaviour
     public bool placeCheck = false;
     public int team = 0;
     public int shipsLeft = 0;
+    public int aiDifficulty = 0;
+
+    
 
     /**
     * Start is called before the first frame update.
@@ -59,16 +63,42 @@ public class TeamController : MonoBehaviour
      */
     private void spawnShips(int length)
     {
-        for (int i = 0; numberOfShips > i; i++)
+        if (aiDifficulty == 0)
         {
-            Ships.Add(Instantiate(ship, this.transform.position,Quaternion.identity,this.transform).GetComponent<ShipController>());
-            Ships[i].transform.position = new Vector3(this.transform.position.x, 
-                                                      this.transform.position.y + i * 30, 
-                                                      this.transform.position.z);
-            Ships[i].SetShipLength(i+1);
-            Ships[i].shipTeam = team;
-            Debug.Log(i);
+            for (int i = 0; numberOfShips > i; i++)
+            {
+                Ships.Add(Instantiate(ship, this.transform.position, Quaternion.identity, this.transform).GetComponent<ShipController>());
+                Ships[i].transform.position = new Vector3(this.transform.position.x,
+                                                          this.transform.position.y + i * 30,
+                                                          this.transform.position.z);
+                Ships[i].SetShipLength(i + 1);
+                Ships[i].shipTeam = team;
+                Debug.Log(i);
+            }
+        } else
+        {
+            List<bool> rowTaken = new List<bool>(8) { false, false, false, false, false, false, false, false};
+            for (int i = 0; numberOfShips > i; i++)
+            {
+                System.Random rnd = new System.Random();
+                int offset = (30 * rnd.Next(0, 7 - i)) + 190;
+                int row = rnd.Next(0, rowTaken.Capacity);
+                while (rowTaken[row])
+                {
+                    row = rnd.Next(0, rowTaken.Capacity);
+                }
+                rowTaken[row] = true;
+
+                Ships.Add(Instantiate(ship, this.transform.position, Quaternion.identity, this.transform).GetComponent<ShipController>());
+                Ships[i].transform.position = new Vector3(this.transform.position.x + offset,
+                                                          this.transform.position.y - 70 + row * 30,
+                                                          this.transform.position.z);
+                Ships[i].SetShipLength(i + 1);
+                Ships[i].shipTeam = team;
+                Debug.Log(i);
+            }
         }
+        
     }
 
     /**

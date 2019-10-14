@@ -62,6 +62,8 @@ public class CanvasScript : MonoBehaviour
 
         // Game Over Menu Button Listener Events.
         mainMenuButton.onClick.AddListener(RestartGame);
+
+        Team2.aiDifficulty = 2;
     }
 
     /**
