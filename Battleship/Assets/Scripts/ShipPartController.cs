@@ -38,9 +38,10 @@ public class ShipPartController : MonoBehaviour
     {
         if (parent.isMoving)
         {
-            transform.parent.transform.position = Camera.main.ScreenToWorldPoint( new Vector3 (Input.mousePosition.x,
-                                                                                  Input.mousePosition.y,
-                                                                                  -Camera.main.transform.position.z));
+            transform.parent.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
+                Input.mousePosition.y,
+                -Camera.main.transform.position.z));
+            
             if (Input.GetKeyDown("a"))
             {
                 parent.FaceLeft();

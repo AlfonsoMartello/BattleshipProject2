@@ -10,6 +10,7 @@ public class ShipController : MonoBehaviour
     bool allPartsDestroyed = false;
     bool isSpawned = false;
     bool partCheck = false;
+    readonly float EPSILON = 0.01f;
     public bool destoryCheck = false;
     public bool isMoving = false;
     public bool shipReadyToPair = false;
@@ -42,7 +43,7 @@ public class ShipController : MonoBehaviour
     */
     private void Update()
     {
-        //spawn
+                //spawn
         if (isSpawned == false && shipLength > 0)
         {
             Spawn();
@@ -153,12 +154,34 @@ public class ShipController : MonoBehaviour
                     part.rend.color = Color.green;
                 }
             }
+            snapToGrid();
         }
-        else
+    }
+
+    /**
+     * @pre Ship must exist
+     * @post Snaps ship to grid if all parts of the ship are over top of the
+     * board
+     * @param None
+     * @return None
+     */
+    public void snapToGrid()
+    {
+        bool overBoard = true;
+        foreach (ShipPartController part in parts)
         {
-            
+            overBoard = (part.bondTarget != null) && overBoard;
         }
-        
+
+        if (overBoard && ((System.Math.Abs(Input.GetAxis("Mouse X")) < EPSILON) || (System.Math.Abs(Input.GetAxis("Mouse Y")) < EPSILON)))
+        {
+            foreach (ShipPartController part in parts)
+            {
+                part.transform.position = new Vector3(part.bondTarget.transform.position.x,
+                                                      part.bondTarget.transform.position.y,
+                                                      8);
+            }
+        }
     }
 
     /**
@@ -222,7 +245,7 @@ public class ShipController : MonoBehaviour
     public void AttemptBond()
     {
         if (partCheck)
-        {
+        {   
             shipReadyToPair = true;
             foreach (ShipPartController part in parts)
             {
@@ -245,20 +268,28 @@ public class ShipController : MonoBehaviour
             part.rend.color = Color.white;
         }
     }
+    /**
+     * @pre Ship was placed with mouse on board.
+     * @post Attempts to bond the ship to the game board in valid location
+     * @param None
+     * @return None
+     */
+    public void ForceBond()
+    {
+        shipReadyToPair = true;
+        foreach (ShipPartController part in parts)
+        {
+            part.bound = true;
+            part.bondTarget.tag = "Closed";
+            part.bondTarget.target = part;
 
+            team.checkPlacement();
+        }
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+        foreach (ShipPartController part in parts)
+        {
+            part.rend.sortingLayerName = "Default";
+            part.rend.color = Color.white;
+        }
+    }
 }

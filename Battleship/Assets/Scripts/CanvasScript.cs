@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 /**
 *  @class description: CanvasScript Contains all game transisitions from main menu, to ship placement menu, to main game interactions.
@@ -21,6 +23,7 @@ public class CanvasScript : MonoBehaviour
     public TeamController Team2;
     public BoardInteraction BattleshipBoard;
     bool showShips = false;
+    bool gameOver = false;
 
     /**
     * @pre Start is called before the first frame update.
@@ -59,6 +62,8 @@ public class CanvasScript : MonoBehaviour
 
         // Game Over Menu Button Listener Events.
         mainMenuButton.onClick.AddListener(RestartGame);
+
+        Team2.aiDifficulty = 2;
     }
 
     /**
@@ -86,17 +91,21 @@ public class CanvasScript : MonoBehaviour
         }
 
 
-        if (Team1.loseCheck == true || Team2.loseCheck == true)
+        if ((Team1.loseCheck == true || Team2.loseCheck == true) && !gameOver)
         {
             if (Team1.loseCheck == true)
             {
                 player1WinMessage.SetActive(false);
                 player2WinMessage.SetActive(true);
+                Debug.Log("Player 2 Score: " + BattleshipBoard.player2Shots / Team2.numberOfShips);
+                WriteScoreToFile(BattleshipBoard.player2Shots, "Player 2"); // TODO: Change this to use the given player name
             }
             else if (Team2.loseCheck == true)
             {
                 player1WinMessage.SetActive(true);
                 player2WinMessage.SetActive(false);
+                Debug.Log("Player 1 Score: " + BattleshipBoard.player1Shots / Team1.numberOfShips);
+                WriteScoreToFile(BattleshipBoard.player1Shots, "Player 1"); // TODO: Change this to use the given player name
             }
 
             shipSelectorPanel.SetActive(false);
@@ -105,6 +114,7 @@ public class CanvasScript : MonoBehaviour
             switchPanel.SetActive(false);
             pauseMenu.SetActive(false);
             gameOverMenu.SetActive(true);
+            gameOver = true;
         }
     }
 
@@ -359,5 +369,36 @@ public class CanvasScript : MonoBehaviour
         * The line of code for the RestartGame() function can be found in the Unity Answer Forum: https://answers.unity.com/questions/46918/reload-scene-when-dead.html
         */
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
+    /**
+    * @pre Game has ended
+    * @post Add current game's score data to the 'savedGames.gd' file
+    * @param int score of the winner, string name of player who won
+    * @return None.
+    */
+    private void WriteScoreToFile(int score, string playerName)
+    {
+        ScoreData scoreData = new ScoreData();
+        BinaryFormatter bf = new BinaryFormatter();
+        if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+        {
+            FileStream readFile = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
+            scoreData = (ScoreData)bf.Deserialize(readFile);
+            readFile.Close();
+        }
+        ScoreEntry currentScoreEntry = new ScoreEntry();
+        currentScoreEntry.score = score;
+        currentScoreEntry.name = playerName;
+        scoreData.AddScoreByNumShips(Team1.numberOfShips, currentScoreEntry);
+        FileStream writeFile = File.Create(Application.persistentDataPath + "/savedGames.gd");
+        bf.Serialize(writeFile, scoreData);
+        writeFile.Close();
+
+        foreach (ScoreEntry a in scoreData.GetScoresByNumShips(1))
+        {
+            Debug.Log("1 Ship: " + a.name + ": " + a.score);
+        }
     }
 }

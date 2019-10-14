@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['onclickhit_52',['Onclickhit',['../classbutton_controller.html#aba20adf3d80b729244614cc18d9cfd22',1,'buttonController']]],
-  ['onclickicons_53',['onClickIcons',['../class_board_interaction.html#a5865dd13eca2eeea1ab75363d8025f82',1,'BoardInteraction']]],
-  ['onmousedown_54',['OnMouseDown',['../class_ship_part_controller.html#ad1e1bdc1070cd4ca120a47d9e513e6ac',1,'ShipPartController']]],
-  ['onmouseup_55',['OnMouseUp',['../class_ship_part_controller.html#af18d6c3e84f02c93b3d1aaf079810d05',1,'ShipPartController']]],
-  ['ontriggerenter2d_56',['OnTriggerEnter2D',['../class_ship_part_controller.html#abcf76cba3a83e936cf4f333ffd062ff0',1,'ShipPartController']]],
-  ['ontriggerexit2d_57',['OnTriggerExit2D',['../class_ship_part_controller.html#a106e675607c75e4fd9d05172254467d1',1,'ShipPartController']]],
-  ['ontriggerstay2d_58',['OnTriggerStay2D',['../classbutton_controller.html#a6c18132e416ec86553b56340c500c65d',1,'buttonController.OnTriggerStay2D()'],['../class_ship_part_controller.html#a93366e99d2c7f0ec654bf57094a2a3b4',1,'ShipPartController.OnTriggerStay2D()']]]
+  ['name_54',['name',['../class_score_entry.html#a1fbd9da0d3d7ec5471758d762bca1068',1,'ScoreEntry']]],
+  ['nobutton_55',['noButton',['../class_canvas_script.html#aacc1ba922d808c6752382794ee0a17d6',1,'CanvasScript']]],
+  ['numberofships_56',['numberOfShips',['../class_team_controller.html#a3a0b05bd37574601bfa02cfa08c99fa0',1,'TeamController']]],
+  ['numships_57',['numShips',['../class_canvas_script.html#aaf2cb0da87e6b51a8b2ad4954a8a2b8f',1,'CanvasScript']]]
 ];

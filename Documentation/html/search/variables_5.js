@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['gamecontroller_196',['gameController',['../class_canvas_script.html#a69fb75eb8a023e608934f6c9ef640ce7',1,'CanvasScript']]],
-  ['gameovermenu_197',['gameOverMenu',['../class_canvas_script.html#a11e2a5a7987c4db8f0ed7af363adcb29',1,'CanvasScript']]],
-  ['gameuipanel_198',['gameUIPanel',['../class_board_interaction.html#a74393a0a50baa350e76d67851fb59fff',1,'BoardInteraction.gameUIPanel()'],['../class_canvas_script.html#a3962817dfe1e2ab1e1d22c8395147dfb',1,'CanvasScript.gameUIPanel()']]]
+  ['firebutton_223',['fireButton',['../class_board_interaction.html#a126a673937abe28b679f65a0a295b624',1,'BoardInteraction.fireButton()'],['../class_canvas_script.html#a7bd7eb237d05e438d6a0e3196f8d6988',1,'CanvasScript.fireButton()']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Battleship: Team Crossover Edition: BoardInteraction Class Reference</title>
+<title>KRAAG Project 2: BoardInteraction Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,11 +28,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Logo-Battleship-2.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Battleship: Team Crossover Edition
+   <div id="projectname">KRAAG Project 2
    </div>
-   <div id="projectbrief">Team Crossover&#39;s implementation of EECS448 project 1.</div>
   </td>
  </tr>
  </tbody>
@@ -100,22 +98,9 @@ $(document).ready(function(){initNavTree('class_board_interaction.html','');});
 <div class="dynheader">
 Inheritance diagram for BoardInteraction:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_board_interaction__inherit__graph.png" border="0" usemap="#_board_interaction_inherit__map" alt="Inheritance graph"/></div>
-<map name="_board_interaction_inherit__map" id="_board_interaction_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,131,212,501"/>
-<area shape="rect" title=" " alt="" coords="53,5,164,83"/>
-</map>
-</div>
-<div class="dynheader">
-Collaboration diagram for BoardInteraction:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_board_interaction__coll__graph.png" border="0" usemap="#_board_interaction_coll__map" alt="Collaboration graph"/></div>
-<map name="_board_interaction_coll__map" id="_board_interaction_coll__map">
-<area shape="rect" title=" " alt="" coords="20,189,227,501"/>
-<area shape="rect" title=" " alt="" coords="5,5,116,83"/>
-<area shape="rect" title=" " alt="" coords="140,5,232,83"/>
-</map>
-</div>
+ <div class="center">
+  <img src="class_board_interaction.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -134,6 +119,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a81f1893755f3496f91c0ed4cc6ae4f38"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board_interaction.html#a81f1893755f3496f91c0ed4cc6ae4f38">player1Shots</a></td></tr>
+<tr class="separator:a81f1893755f3496f91c0ed4cc6ae4f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5865dd13eca2eeea1ab75363d8025f82"><td class="memItemLeft" align="right" valign="top">Sprite[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board_interaction.html#a5865dd13eca2eeea1ab75363d8025f82">onClickIcons</a></td></tr>
 <tr class="memdesc:a5865dd13eca2eeea1ab75363d8025f82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of sprites for 'Hit', 'Miss', and 'Mark'.  <a href="class_board_interaction.html#a5865dd13eca2eeea1ab75363d8025f82">More...</a><br /></td></tr>
 <tr class="separator:a5865dd13eca2eeea1ab75363d8025f82"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,6 +144,8 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:abd54ddc2e9b266a2e890d53b421f0561"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board_interaction.html#abd54ddc2e9b266a2e890d53b421f0561">player2Shots</a> = 0</td></tr>
+<tr class="separator:abd54ddc2e9b266a2e890d53b421f0561"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8b41c1f3a5cf43fb64bba52096d96ee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board_interaction.html#aa8b41c1f3a5cf43fb64bba52096d96ee">player2Turn</a> = false</td></tr>
 <tr class="memdesc:aa8b41c1f3a5cf43fb64bba52096d96ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Player1 forced to go first. Switch after players use up their turn.  <a href="class_board_interaction.html#aa8b41c1f3a5cf43fb64bba52096d96ee">More...</a><br /></td></tr>
 <tr class="separator:aa8b41c1f3a5cf43fb64bba52096d96ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,6 +174,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BoardInteraction.BattleshipSpacesBoard1 </td>
@@ -194,6 +186,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>: On-click function for the array of buttons that make up the battleship grid for Player1. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>: On-click places a checkmark to let the user know which coordinate they currently have picked on the Player1 battleship grid. </dd></dl>
@@ -212,6 +209,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BoardInteraction.BattleshipSpacesBoard2 </td>
@@ -221,6 +221,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>: On-click function for the array of buttons that make up the battleship grid for Player2. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>: On-click places a checkmark to let the user know which coordinate they currently have picked on the Player2 battleship grid. </dd></dl>
@@ -239,6 +244,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BoardInteraction.ConfirmButtonInteractableOff </td>
@@ -247,6 +255,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>: A player presses the 'Confirm' button on the ship selection panel. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>: Sets both boards to not be interactive, making sure players don't press buttons while on the ship selection panel. </dd></dl>
@@ -257,15 +270,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>: None. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_board_interaction_aea6a360f4045f2881c99ce39b75ba522_icgraph.png" border="0" usemap="#class_board_interaction_aea6a360f4045f2881c99ce39b75ba522_icgraph" alt=""/></div>
-<map name="class_board_interaction_aea6a360f4045f2881c99ce39b75ba522_icgraph" id="class_board_interaction_aea6a360f4045f2881c99ce39b75ba522_icgraph">
-<area shape="rect" title=" " alt="" coords="201,5,365,47"/>
-<area shape="rect" href="class_board_interaction.html#a9bc73c7d8959e4bef83963ee3ba9a35f" title=" " alt="" coords="5,13,153,39"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -274,6 +278,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BoardInteraction.FireButtonLockIn </td>
@@ -282,6 +289,11 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>: A player presses the 'Fire' button </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>: A player, depending on whose turn it is, locks in their choice to fire, turning the temporary checkmark into a 'Miss' or 'Hit' sprite on the button they chose to attack. </dd></dl>
@@ -292,15 +304,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>: None. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_board_interaction_a2f90971fcd65db11a7d8c6b0d8dab2dc_icgraph.png" border="0" usemap="#class_board_interaction_a2f90971fcd65db11a7d8c6b0d8dab2dc_icgraph" alt=""/></div>
-<map name="class_board_interaction_a2f90971fcd65db11a7d8c6b0d8dab2dc_icgraph" id="class_board_interaction_a2f90971fcd65db11a7d8c6b0d8dab2dc_icgraph">
-<area shape="rect" title=" " alt="" coords="201,5,381,47"/>
-<area shape="rect" href="class_board_interaction.html#a9bc73c7d8959e4bef83963ee3ba9a35f" title=" " alt="" coords="5,13,153,39"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -322,7 +325,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -335,18 +338,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>: None. </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_board_interaction_a9bc73c7d8959e4bef83963ee3ba9a35f_cgraph.png" border="0" usemap="#class_board_interaction_a9bc73c7d8959e4bef83963ee3ba9a35f_cgraph" alt=""/></div>
-<map name="class_board_interaction_a9bc73c7d8959e4bef83963ee3ba9a35f_cgraph" id="class_board_interaction_a9bc73c7d8959e4bef83963ee3ba9a35f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,111,153,138"/>
-<area shape="rect" href="class_board_interaction.html#aea6a360f4045f2881c99ce39b75ba522" title=" " alt="" coords="213,5,377,47"/>
-<area shape="rect" href="class_board_interaction.html#a2f90971fcd65db11a7d8c6b0d8dab2dc" title=" " alt="" coords="205,71,385,112"/>
-<area shape="rect" href="class_board_interaction.html#a03b1bb56e785cdc76ae7b9050cb266ba" title=" " alt="" coords="201,136,388,177"/>
-<area shape="rect" href="class_board_interaction.html#aaa4b47f28fd22f5b4747056eba30e23b" title=" " alt="" coords="204,201,385,243"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -355,6 +346,9 @@ Here is the call graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BoardInteraction.StartButtonCommencePlay </td>
@@ -363,6 +357,11 @@ Here is the call graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>: A player presses the 'Start' button after setting their ships. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>: Sets Player1's board to interactive and Player2's board to NOT be interactive, forcing whoever is playing as Player1 to go first. This also sets the buttons' sprites to nothing. </dd></dl>
@@ -373,15 +372,6 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>: None. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_board_interaction_a03b1bb56e785cdc76ae7b9050cb266ba_icgraph.png" border="0" usemap="#class_board_interaction_a03b1bb56e785cdc76ae7b9050cb266ba_icgraph" alt=""/></div>
-<map name="class_board_interaction_a03b1bb56e785cdc76ae7b9050cb266ba_icgraph" id="class_board_interaction_a03b1bb56e785cdc76ae7b9050cb266ba_icgraph">
-<area shape="rect" title=" " alt="" coords="201,5,388,47"/>
-<area shape="rect" href="class_board_interaction.html#a9bc73c7d8959e4bef83963ee3ba9a35f" title=" " alt="" coords="5,13,153,39"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -390,6 +380,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BoardInteraction.YesButtonReset </td>
@@ -398,6 +391,11 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section pre"><dt>Precondition</dt><dd>: A player presses the 'Yes' button to exit to the main menu. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>: The buttons' sprites get reset to nothing, sets the buttons to be interactable for the next game. </dd></dl>
@@ -408,15 +406,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>: None. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_board_interaction_aaa4b47f28fd22f5b4747056eba30e23b_icgraph.png" border="0" usemap="#class_board_interaction_aaa4b47f28fd22f5b4747056eba30e23b_icgraph" alt=""/></div>
-<map name="class_board_interaction_aaa4b47f28fd22f5b4747056eba30e23b_icgraph" id="class_board_interaction_aaa4b47f28fd22f5b4747056eba30e23b_icgraph">
-<area shape="rect" title=" " alt="" coords="201,5,383,47"/>
-<area shape="rect" href="class_board_interaction.html#a9bc73c7d8959e4bef83963ee3ba9a35f" title=" " alt="" coords="5,13,153,39"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -539,6 +528,20 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a81f1893755f3496f91c0ed4cc6ae4f38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81f1893755f3496f91c0ed4cc6ae4f38">&#9670;&nbsp;</a></span>player1Shots</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BoardInteraction.player1Shots</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab09e46e5d3d9e349a31f31ad362524b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab09e46e5d3d9e349a31f31ad362524b7">&#9670;&nbsp;</a></span>player1Turn</h2>
 
@@ -564,6 +567,28 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">GameObject BoardInteraction.player2Board</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd54ddc2e9b266a2e890d53b421f0561"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd54ddc2e9b266a2e890d53b421f0561">&#9670;&nbsp;</a></span>player2Shots</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BoardInteraction.player2Shots = 0</td>
         </tr>
       </table>
   </td>
@@ -716,7 +741,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Fall 2019/EECS448 Software Engineering/BattleshipProject/Battleship/Assets/Scripts/<a class="el" href="_board_interaction_8cs.html">BoardInteraction.cs</a></li>
+<li>Battleship/Assets/Scripts/<a class="el" href="_board_interaction_8cs.html">BoardInteraction.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
