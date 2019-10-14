@@ -43,7 +43,7 @@ public class ShipController : MonoBehaviour
     */
     private void Update()
     {
-        //spawn
+                //spawn
         if (isSpawned == false && shipLength > 0)
         {
             Spawn();
@@ -165,7 +165,7 @@ public class ShipController : MonoBehaviour
      * @param None
      * @return None
      */
-    private void snapToGrid()
+    public void snapToGrid()
     {
         bool overBoard = true;
         foreach (ShipPartController part in parts)
@@ -260,6 +260,30 @@ public class ShipController : MonoBehaviour
         {
             transform.position = startPos;
             transform.rotation = Quaternion.identity;
+        }
+
+        foreach (ShipPartController part in parts)
+        {
+            part.rend.sortingLayerName = "Default";
+            part.rend.color = Color.white;
+        }
+    }
+    /**
+     * @pre Ship was placed with mouse on board.
+     * @post Attempts to bond the ship to the game board in valid location
+     * @param None
+     * @return None
+     */
+    public void ForceBond()
+    {
+        shipReadyToPair = true;
+        foreach (ShipPartController part in parts)
+        {
+            part.bound = true;
+            part.bondTarget.tag = "Closed";
+            part.bondTarget.target = part;
+
+            team.checkPlacement();
         }
 
         foreach (ShipPartController part in parts)

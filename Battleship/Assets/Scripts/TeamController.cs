@@ -95,8 +95,10 @@ public class TeamController : MonoBehaviour
                                                           this.transform.position.z);
                 Ships[i].SetShipLength(i + 1);
                 Ships[i].shipTeam = team;
-                Debug.Log(i);
+                Ships[i].isMoving = false;
             }
+            Ships.ForEach(x => { x.snapToGrid(); x.ForceBond(); });
+            placeCheck = true;
         }
         
     }
