@@ -360,4 +360,10 @@ public class CanvasScript : MonoBehaviour
         */
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void ExitGame()
+    {
+        Debug.Log("EXIT THE GAME! BYE!!");
+        Application.Quit();
+    }
 }
