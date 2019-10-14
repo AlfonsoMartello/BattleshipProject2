@@ -96,14 +96,14 @@ public class CanvasScript : MonoBehaviour
                 player1WinMessage.SetActive(false);
                 player2WinMessage.SetActive(true);
                 Debug.Log("Player 2 Score: " + BattleshipBoard.player2Shots / Team2.numberOfShips);
-                WriteScoreToFile(BattleshipBoard.player2Shots);
+                WriteScoreToFile(BattleshipBoard.player2Shots, "Player 2"); // TODO: Change this to use the given player name
             }
             else if (Team2.loseCheck == true)
             {
                 player1WinMessage.SetActive(true);
                 player2WinMessage.SetActive(false);
                 Debug.Log("Player 1 Score: " + BattleshipBoard.player1Shots / Team1.numberOfShips);
-                WriteScoreToFile(BattleshipBoard.player1Shots);
+                WriteScoreToFile(BattleshipBoard.player1Shots, "Player 1"); // TODO: Change this to use the given player name
             }
 
             shipSelectorPanel.SetActive(false);
@@ -375,7 +375,7 @@ public class CanvasScript : MonoBehaviour
         Application.Quit();
     }
 
-    private void WriteScoreToFile(int score)
+    private void WriteScoreToFile(int score, string playerName)
     {
         ScoreData scoreData = new ScoreData();
         BinaryFormatter bf = new BinaryFormatter();
@@ -385,15 +385,17 @@ public class CanvasScript : MonoBehaviour
             scoreData = (ScoreData)bf.Deserialize(readFile);
             readFile.Close();
         }
-
-        scoreData.AddScoreByNumShips(Team1.numberOfShips, score);
+        ScoreEntry currentScoreEntry = new ScoreEntry();
+        currentScoreEntry.score = score;
+        currentScoreEntry.name = playerName;
+        scoreData.AddScoreByNumShips(Team1.numberOfShips, currentScoreEntry);
         FileStream writeFile = File.Create(Application.persistentDataPath + "/savedGames.gd");
         bf.Serialize(writeFile, scoreData);
         writeFile.Close();
 
-        foreach (int a in scoreData.GetScoresByNumShips(1))
+        foreach (ScoreEntry a in scoreData.GetScoresByNumShips(1))
         {
-            Debug.Log("1 Ship: " + a);
+            Debug.Log("1 Ship: " + a.name + ": " + a.score);
         }
     }
 }
