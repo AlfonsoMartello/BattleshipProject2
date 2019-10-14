@@ -141,10 +141,8 @@ public class ShipController : MonoBehaviour
         if (isMoving)
         {
             partCheck = true;
-            bool overBoard = true;
             foreach (ShipPartController part in parts)
             {
-                overBoard = (part.bondTarget != null) && overBoard;
                 part.rend.sortingLayerName = "Moving";
                 if (!part.partReadyToPair)
                 {
@@ -156,14 +154,32 @@ public class ShipController : MonoBehaviour
                     part.rend.color = Color.green;
                 }
             }
-            if (overBoard && ((System.Math.Abs(Input.GetAxis("Mouse X")) < EPSILON) || (System.Math.Abs(Input.GetAxis("Mouse Y")) < EPSILON)))
+            snapToGrid();
+        }
+    }
+
+    /**
+     * @pre Ship must exist
+     * @post Snaps ship to grid if all parts of the ship are over top of the
+     * board
+     * @param None
+     * @return None
+     */
+    private void snapToGrid()
+    {
+        bool overBoard = true;
+        foreach (ShipPartController part in parts)
+        {
+            overBoard = (part.bondTarget != null) && overBoard;
+        }
+
+        if (overBoard && ((System.Math.Abs(Input.GetAxis("Mouse X")) < EPSILON) || (System.Math.Abs(Input.GetAxis("Mouse Y")) < EPSILON)))
+        {
+            foreach (ShipPartController part in parts)
             {
-                foreach (ShipPartController part in parts)
-                {
-                    part.transform.position = new Vector3(part.bondTarget.transform.position.x,
-                                                          part.bondTarget.transform.position.y,
-                                                          8);
-                }
+                part.transform.position = new Vector3(part.bondTarget.transform.position.x,
+                                                      part.bondTarget.transform.position.y,
+                                                      8);
             }
         }
     }
