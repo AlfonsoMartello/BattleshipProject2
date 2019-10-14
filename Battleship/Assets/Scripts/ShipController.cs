@@ -10,6 +10,7 @@ public class ShipController : MonoBehaviour
     bool allPartsDestroyed = false;
     bool isSpawned = false;
     bool partCheck = false;
+    readonly float EPSILON = 0.01f;
     public bool destoryCheck = false;
     public bool isMoving = false;
     public bool shipReadyToPair = false;
@@ -19,7 +20,6 @@ public class ShipController : MonoBehaviour
     public int shipLength = 0;
     public int shipTeam = 0;
     public GameObject shipPart;
-    float EPSILON = 0.05f;
 
     /**
     * @pre Start is called before the first frame update
