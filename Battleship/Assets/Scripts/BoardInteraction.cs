@@ -134,6 +134,18 @@ public class BoardInteraction : MonoBehaviour
         {
             playerGame();
         }
+        else if (Team2.aiDifficulty == 1)
+        {
+            AIeasyGame();
+        }
+        else if (Team2.aiDifficulty == 2)
+        {
+            AInormalGame();
+        }
+        else if (Team2.aiDifficulty == 3)
+        {
+            AIhardGame();
+        }
     }
 
     /**
@@ -309,5 +321,17 @@ public class BoardInteraction : MonoBehaviour
                 playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
             }
         }
+    }
+    public void AIeasyGame()
+    {
+
+    }
+    public void AInormalGame()
+    {
+
+    }
+    public void AIhardGame()
+    {
+
     }
 }
