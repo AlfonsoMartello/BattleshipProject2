@@ -350,14 +350,58 @@ public class BoardInteraction : MonoBehaviour
 
                 //else
 
-                if (spacesAvailableBoard1[i].GetComponent<buttonController>().target != null)
+                if (spacesAvailableBoard1[i].GetComponent<buttonController>().target != null && spacesAvailableBoard1[i].image.sprite!= onClickIcons[1])
                 {
+                    Debug.Log("found a not null one");
                     spacesAvailableBoard1[i].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                     spacesAvailableBoard1[i].image.sprite = onClickIcons[1];
                     hasPlayed1 = true;
                     break;
                 }
 
+            }
+
+            for (int i = 0; i < spacesAvailableBoard1.Length; i++) //sets up next player's turn
+            {
+                if (hasPlayed1)
+                {
+                    spacesAvailableBoard1[i].interactable = false;
+                    if (spacesAvailableBoard2[i].image.sprite == null)
+                    {
+                        spacesAvailableBoard2[i].interactable = true;
+                    }
+                }
+                else
+                {
+                    if (spacesAvailableBoard1[i].image.sprite == null)
+                    {
+                        spacesAvailableBoard1[i].interactable = true;
+                    }
+                }
+            }
+
+            if (hasPlayed1) //changes player turn panel text and interaction. Prevents other panels from appearing. Shows switch panel string. The "Continue" button (not in this script) changes viewed panel.
+            {
+                player1Turn = false;
+                player1Board.GetComponent<Image>().enabled = false;
+                player2Turn = true;
+                player2Board.GetComponent<Image>().enabled = true;
+                gameUIPanel.SetActive(false);
+                battleshipGrids.SetActive(false);
+                switchPanel.SetActive(true);
+                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                player2Shots++;
+            }
+            else
+            {
+                player1Turn = true;
+                player1Board.GetComponent<Image>().enabled = true;
+                player2Turn = false;
+                player2Board.GetComponent<Image>().enabled = false;
+                gameUIPanel.SetActive(false);
+                battleshipGrids.SetActive(false);
+                switchPanel.SetActive(true);
+                playerTurn.GetComponent<Text>().text = "It's computer's Turn";
             }
         }
         else
@@ -411,7 +455,7 @@ public class BoardInteraction : MonoBehaviour
                 battleshipGrids.SetActive(false);
                 gameUIPanel.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 2's Turn";
+                playerTurn.GetComponent<Text>().text = "It's the computer's Turn";
                 player1Shots++;
             }
             else

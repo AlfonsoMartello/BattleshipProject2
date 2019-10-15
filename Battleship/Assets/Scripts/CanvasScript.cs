@@ -79,6 +79,11 @@ public class CanvasScript : MonoBehaviour
     public void Update()
     {
         Team2.aiDifficulty = AIdif;
+
+        if (AIdif != 0)
+        {
+            switchButton.gameObject.SetActive(false);
+        }
         if (Team1.placeCheck == true && Team2.placeCheck == true)
         {
             startButton.interactable = true;
