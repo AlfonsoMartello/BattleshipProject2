@@ -5929,7 +5929,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Do you want to play against another player or an AI?
+  m_Text: "\t\t\tChoose your opponent:"
 --- !u!222 &367255337
 CanvasRenderer:
   m_ObjectHideFlags: 0

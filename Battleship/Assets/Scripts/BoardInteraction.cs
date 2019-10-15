@@ -17,6 +17,7 @@ public class BoardInteraction : MonoBehaviour
     public bool player1Turn = true, player2Turn = false; //!< Player1 forced to go first. Switch after players use up their turn.
     public UnityEngine.UI.Button yesButton, fireButton, confirmButton, startButton; //!< Button objects for boardInteraction event listeners
     public GameObject gameUIPanel, battleshipGrids, switchPanel, player1Board, player2Board, playerTurn; //!< GameObjects for UI panels
+    public TeamController team1, team2;
 
 
     /**
