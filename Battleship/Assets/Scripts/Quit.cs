@@ -9,6 +9,11 @@ public class Quit : MonoBehaviour
         Application.Quit();
     }
 
+    private void Start()
+    {
+        ScoreBoardPanel.SetActive(false);
+    }
+
     public GameObject ScoreBoardPanel;
     public GameObject PlayerTurn;
     public void openScoreBoardPanel()

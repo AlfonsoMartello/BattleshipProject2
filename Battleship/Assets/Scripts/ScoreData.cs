@@ -29,8 +29,21 @@ public class ScoreData
 }
 
 [Serializable]
-public class ScoreEntry
+public class ScoreEntry : IComparable
 {
     public int score;
     public string name;
+
+    int IComparable.CompareTo(object obj)
+    {
+        ScoreEntry otherScore = obj as ScoreEntry;
+        if (otherScore.score > score)
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }
