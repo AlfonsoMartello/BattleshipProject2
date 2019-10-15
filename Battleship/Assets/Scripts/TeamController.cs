@@ -17,7 +17,7 @@ public class TeamController : MonoBehaviour
     public int team = 0;
     public int shipsLeft = 0;
     public int aiDifficulty = 0;
-
+    public string playerName;
     
 
     /**

@@ -39,11 +39,11 @@ public class ScoreEntry : IComparable
         ScoreEntry otherScore = obj as ScoreEntry;
         if (otherScore.score > score)
         {
-            return 1;
+            return -1;
         }
         else
         {
-            return -1;
+            return 1;
         }
     }
 }

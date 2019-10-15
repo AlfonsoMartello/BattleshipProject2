@@ -16,6 +16,7 @@ public class CanvasScript : MonoBehaviour
 {
     int numShips;
     public Dropdown shipSelector, aiSelector;
+    public InputField player1Name, player2Name;
     public UnityEngine.UI.Button confirmButton, startButton, switchButton, returnButton, fireButton, revealShipsButton, pauseButton, continueButton, resumeButton, quitButton, yesButton, noButton, mainMenuButton;
     public GameObject shipSelectorPanel, shipPlacementPanel, gameUIPanel, battleshipGrids, switchPanel, pauseMenu, gameOverMenu, confirmationPanel, gameController;
     public GameObject player1Board, player2Board, player1PlacmentMessage, player2PlacmentMessage, player1ShipsRemainingMessage, player2ShipsRemainingMessage, player2WinMessage, player1WinMessage;
@@ -99,14 +100,14 @@ public class CanvasScript : MonoBehaviour
                 player1WinMessage.SetActive(false);
                 player2WinMessage.SetActive(true);
                 Debug.Log("Player 2 Score: " + BattleshipBoard.player2Shots / Team2.numberOfShips);
-                WriteScoreToFile(BattleshipBoard.player2Shots, "Player 2"); // TODO: Change this to use the given player name
+                WriteScoreToFile(BattleshipBoard.player2Shots, Team2.playerName);
             }
             else if (Team2.loseCheck == true)
             {
                 player1WinMessage.SetActive(true);
                 player2WinMessage.SetActive(false);
                 Debug.Log("Player 1 Score: " + BattleshipBoard.player1Shots / Team1.numberOfShips);
-                WriteScoreToFile(BattleshipBoard.player1Shots, "Player 1"); // TODO: Change this to use the given player name
+                WriteScoreToFile(BattleshipBoard.player1Shots, Team1.playerName);
             }
 
             shipSelectorPanel.SetActive(false);
@@ -159,6 +160,9 @@ public class CanvasScript : MonoBehaviour
     private void BeginShipPlacement()
     {
         Debug.Log("You have clicked the Confirm button!");
+
+        Team1.playerName = player1Name.text != "" ? player1Name.text : "Player 1";
+        Team2.playerName = player2Name.text != "" ? player2Name.text : "Player 2";
 
         shipSelectorPanel.SetActive(false);
         shipPlacementPanel.SetActive(true);
