@@ -26262,6 +26262,8 @@ MonoBehaviour:
   player1Board: {fileID: 858817115}
   player2Board: {fileID: 880459670}
   playerTurn: {fileID: 2089025417}
+  Team1: {fileID: 1539823599}
+  Team2: {fileID: 803207233}
 --- !u!4 &1495956190
 Transform:
   m_ObjectHideFlags: 0
