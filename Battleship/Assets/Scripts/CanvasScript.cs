@@ -15,7 +15,7 @@ using System.IO;
 public class CanvasScript : MonoBehaviour
 {
     int numShips;
-    public Dropdown shipSelector;
+    public Dropdown shipSelector, aiSelector;
     public UnityEngine.UI.Button confirmButton, startButton, switchButton, returnButton, fireButton, revealShipsButton, pauseButton, continueButton, resumeButton, quitButton, yesButton, noButton, mainMenuButton;
     public GameObject shipSelectorPanel, shipPlacementPanel, gameUIPanel, battleshipGrids, switchPanel, pauseMenu, gameOverMenu, confirmationPanel, gameController;
     public GameObject player1Board, player2Board, player1PlacmentMessage, player2PlacmentMessage, player1ShipsRemainingMessage, player2ShipsRemainingMessage, player2WinMessage, player1WinMessage;
@@ -24,6 +24,7 @@ public class CanvasScript : MonoBehaviour
     public BoardInteraction BattleshipBoard;
     bool showShips = false;
     bool gameOver = false;
+    int AIdif = 0;
 
     /**
     * @pre Start is called before the first frame update.
@@ -37,6 +38,7 @@ public class CanvasScript : MonoBehaviour
 
         // Main Menu Buttons Listener Events.
         shipSelector.onValueChanged.AddListener(SelectShips);
+        aiSelector.onValueChanged.AddListener(SelectAI);
         confirmButton.onClick.AddListener(BeginShipPlacement);
 
         // Ship Placement Menu Buttons Listener Events.
@@ -62,8 +64,6 @@ public class CanvasScript : MonoBehaviour
 
         // Game Over Menu Button Listener Events.
         mainMenuButton.onClick.AddListener(RestartGame);
-
-        Team2.aiDifficulty = 2;
     }
 
     /**
@@ -77,6 +77,7 @@ public class CanvasScript : MonoBehaviour
     */
     public void Update()
     {
+        Team2.aiDifficulty = AIdif;
         if (Team1.placeCheck == true && Team2.placeCheck == true)
         {
             startButton.interactable = true;
@@ -140,6 +141,10 @@ public class CanvasScript : MonoBehaviour
         }
     }
 
+    private void SelectAI(int value)
+    {
+        AIdif = value;
+    }
 
     /**
     * @pre Teams will be given a number of ships based on the shipSelector option value and be instaintiated within incremental sizes.
