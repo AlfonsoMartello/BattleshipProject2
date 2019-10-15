@@ -17,7 +17,8 @@ public class BoardInteraction : MonoBehaviour
     public bool player1Turn = true, player2Turn = false; //!< Player1 forced to go first. Switch after players use up their turn.
     public UnityEngine.UI.Button yesButton, fireButton, confirmButton, startButton; //!< Button objects for boardInteraction event listeners
     public GameObject gameUIPanel, battleshipGrids, switchPanel, player1Board, player2Board, playerTurn; //!< GameObjects for UI panels
-    public TeamController team1, team2;
+    public TeamController Team1;
+    public TeamController Team2;
 
 
     /**
@@ -129,8 +130,52 @@ public class BoardInteraction : MonoBehaviour
     */
     public void FireButtonLockIn()
     {
+        if (Team2.aiDifficulty == 0)
+        {
+            playerGame();
+        }
+    }
+
+    /**
+    * @pre: A player presses the 'Confirm' button on the ship selection panel.
+    * @post: Sets both boards to not be interactive, making sure players don't press buttons
+    * while on the ship selection panel.
+    * @param: None.
+    * @return: None.
+    */
+    public void ConfirmButtonInteractableOff()
+    {
+        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+        {
+            spacesAvailableBoard1[i].interactable = false;
+            spacesAvailableBoard2[i].interactable = false;
+        }
+    }
+
+    /**
+    * @pre: A player presses the 'Start' button after setting their ships.
+    * @post: Sets Player1's board to interactive and Player2's board to NOT be interactive,
+    * forcing whoever is playing as Player2 to go first. This also sets the buttons' sprites to nothing.
+    * @param: None.
+    * @return: None.
+    */
+    public void StartButtonCommencePlay()
+    {
+        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+        {
+            spacesAvailableBoard1[i].interactable = true;
+            player1Board.GetComponent<Image>().enabled = true;
+            spacesAvailableBoard2[i].interactable = false;
+            player2Board.GetComponent<Image>().enabled = false;
+            spacesAvailableBoard1[i].image.sprite = null;
+            spacesAvailableBoard2[i].image.sprite = null;
+        }
+    }
+
+    public void playerGame()
+    {
         bool hasPlayed1 = false, hasPlayed2 = false;
-        
+
         if (player1Turn) //actually player 2 turn
         {
             for (int i = 0; i < spacesAvailableBoard1.Length; i++)
@@ -138,10 +183,10 @@ public class BoardInteraction : MonoBehaviour
 
                 if (spacesAvailableBoard1[i].image.sprite == onClickIcons[2]) //checks for hit
                 {
-                    if(spacesAvailableBoard1[i].GetComponent<buttonController>().target == null) //if the selected button does not contain a ship part. target is an instance of ShipPartController.
+                    if (spacesAvailableBoard1[i].GetComponent<buttonController>().target == null) //if the selected button does not contain a ship part. target is an instance of ShipPartController.
                     {
-                         spacesAvailableBoard1[i].image.sprite = onClickIcons[0]
-;                        hasPlayed1 = true;
+                        spacesAvailableBoard1[i].image.sprite = onClickIcons[0];
+                        hasPlayed1 = true;
                     }
 
                     else
@@ -173,7 +218,7 @@ public class BoardInteraction : MonoBehaviour
                 }
             }
 
-            if(hasPlayed1) //changes player turn panel text and interaction. Prevents other panels from appearing. Shows switch panel string. The "Continue" button (not in this script) changes viewed panel.
+            if (hasPlayed1) //changes player turn panel text and interaction. Prevents other panels from appearing. Shows switch panel string. The "Continue" button (not in this script) changes viewed panel.
             {
                 player1Turn = false;
                 player1Board.GetComponent<Image>().enabled = false;
@@ -263,42 +308,6 @@ public class BoardInteraction : MonoBehaviour
                 switchPanel.SetActive(true);
                 playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
             }
-        }
-    }
-
-    /**
-    * @pre: A player presses the 'Confirm' button on the ship selection panel.
-    * @post: Sets both boards to not be interactive, making sure players don't press buttons
-    * while on the ship selection panel.
-    * @param: None.
-    * @return: None.
-    */
-    public void ConfirmButtonInteractableOff()
-    {
-        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
-        {
-            spacesAvailableBoard1[i].interactable = false;
-            spacesAvailableBoard2[i].interactable = false;
-        }
-    }
-
-    /**
-    * @pre: A player presses the 'Start' button after setting their ships.
-    * @post: Sets Player1's board to interactive and Player2's board to NOT be interactive,
-    * forcing whoever is playing as Player2 to go first. This also sets the buttons' sprites to nothing.
-    * @param: None.
-    * @return: None.
-    */
-    public void StartButtonCommencePlay()
-    {
-        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
-        {
-            spacesAvailableBoard1[i].interactable = true;
-            player1Board.GetComponent<Image>().enabled = true;
-            spacesAvailableBoard2[i].interactable = false;
-            player2Board.GetComponent<Image>().enabled = false;
-            spacesAvailableBoard1[i].image.sprite = null;
-            spacesAvailableBoard2[i].image.sprite = null;
         }
     }
 }
