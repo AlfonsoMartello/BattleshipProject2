@@ -50,9 +50,9 @@ public class BoardInteraction : MonoBehaviour
     {
         if (player1Turn) //Actually player 2's turn
         {
-            for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+            for (int i = 0; i < spacesAvailableBoard1.Length; i++)
             {
-                if(spacesAvailableBoard1[i].image.sprite == null)
+                if (spacesAvailableBoard1[i].image.sprite == null)
                 {
                     spacesAvailableBoard1[i].interactable = true;
                 }
@@ -110,7 +110,7 @@ public class BoardInteraction : MonoBehaviour
     */
     public void YesButtonReset()
     {
-        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+        for (int i = 0; i < spacesAvailableBoard1.Length; i++)
         {
             spacesAvailableBoard1[i].interactable = true;
             spacesAvailableBoard1[i].GetComponent<Image>().sprite = null;
@@ -140,11 +140,10 @@ public class BoardInteraction : MonoBehaviour
         }
         else if (Team2.aiDifficulty == 2)
         {
-            AInormalGame();
+
         }
         else if (Team2.aiDifficulty == 3)
         {
-            AIhardGame();
         }
     }
 
@@ -157,7 +156,7 @@ public class BoardInteraction : MonoBehaviour
     */
     public void ConfirmButtonInteractableOff()
     {
-        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+        for (int i = 0; i < spacesAvailableBoard1.Length; i++)
         {
             spacesAvailableBoard1[i].interactable = false;
             spacesAvailableBoard2[i].interactable = false;
@@ -173,7 +172,7 @@ public class BoardInteraction : MonoBehaviour
     */
     public void StartButtonCommencePlay()
     {
-        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+        for (int i = 0; i < spacesAvailableBoard1.Length; i++)
         {
             spacesAvailableBoard1[i].interactable = true;
             player1Board.GetComponent<Image>().enabled = true;
@@ -324,14 +323,140 @@ public class BoardInteraction : MonoBehaviour
     }
     public void AIeasyGame()
     {
+        bool hasPlayed1 = false, hasPlayed2 = false;
 
-    }
-    public void AInormalGame()
-    {
+        if (player1Turn) //actually player 2 turn
+        {
+            //THIS LINE IS NEW
+            List<int> listNumbers = new List<int>();
+            int randomIndex;
+            do
+            {
+                randomIndex = Random.Range(0, spacesAvailableBoard1.Length - 1);
+            } while (listNumbers.Contains(randomIndex));
+            listNumbers.Add(randomIndex);
 
-    }
-    public void AIhardGame()
-    {
+            if (spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target == null) //if the selected button does not contain a ship part. target is an instance of ShipPartController.
+            {
+                spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[0];
+                hasPlayed1 = true;
+            }
 
+            else
+            {
+                spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
+                spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[1];
+                hasPlayed1 = true;
+            }
+
+            // until this line
+            for (int i = 0; i < spacesAvailableBoard1.Length; i++) //sets up next player's turn
+            {
+                if (hasPlayed1)
+                {
+                    spacesAvailableBoard1[i].interactable = false;
+                    if (spacesAvailableBoard2[i].image.sprite == null)
+                    {
+                        spacesAvailableBoard2[i].interactable = true;
+                    }
+                }
+                else
+                {
+                    if (spacesAvailableBoard1[i].image.sprite == null)
+                    {
+                        spacesAvailableBoard1[i].interactable = true;
+                    }
+                }
+            }
+            if (hasPlayed1) //changes player turn panel text and interaction. Prevents other panels from appearing. Shows switch panel string. The "Continue" button (not in this script) changes viewed panel.
+            {
+                player1Turn = false;
+                player1Board.GetComponent<Image>().enabled = false;
+                player2Turn = true;
+                player2Board.GetComponent<Image>().enabled = true;
+                gameUIPanel.SetActive(false);
+                battleshipGrids.SetActive(false);
+                switchPanel.SetActive(true);
+                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                player2Shots++;
+            }
+            else
+            {
+                player1Turn = true;
+                player1Board.GetComponent<Image>().enabled = true;
+                player2Turn = false;
+                player2Board.GetComponent<Image>().enabled = false;
+                gameUIPanel.SetActive(false);
+                battleshipGrids.SetActive(false);
+                switchPanel.SetActive(true);
+                playerTurn.GetComponent<Text>().text = "It's Player 2's Turn";
+            }
+        }
+        else if (player2Turn) //actually player 1 turn
+        {
+            for (int i = 0; i < spacesAvailableBoard2.Length; i++)
+            {
+
+                if (spacesAvailableBoard2[i].image.sprite == onClickIcons[2])
+                {
+                    if (spacesAvailableBoard2[i].GetComponent<buttonController>().target == null)
+                    {
+                        spacesAvailableBoard2[i].image.sprite = onClickIcons[0];
+                        hasPlayed2 = true;
+                    }
+
+                    else
+                    {
+                        spacesAvailableBoard2[i].GetComponent<buttonController>().target.Hit();
+                        spacesAvailableBoard2[i].image.sprite = onClickIcons[1];
+                        hasPlayed2 = true;
+                    }
+                    break;
+                }
+            }
+
+            for (int i = 0; i < spacesAvailableBoard2.Length; i++)
+            {
+                if (hasPlayed2)
+                {
+                    spacesAvailableBoard2[i].interactable = false;
+                    if (spacesAvailableBoard1[i].image.sprite == null)
+                    {
+                        spacesAvailableBoard1[i].interactable = true;
+                    }
+                }
+                else
+                {
+                    if (spacesAvailableBoard2[i].image.sprite == null)
+                    {
+                        spacesAvailableBoard2[i].interactable = true;
+                    }
+                }
+            }
+
+            if (hasPlayed2)
+            {
+                player1Turn = true;
+                player1Board.GetComponent<Image>().enabled = true;
+                player2Turn = false;
+                player2Board.GetComponent<Image>().enabled = false;
+                battleshipGrids.SetActive(false);
+                gameUIPanel.SetActive(false);
+                switchPanel.SetActive(true);
+                playerTurn.GetComponent<Text>().text = "It's Player 2's Turn";
+                player1Shots++;
+            }
+            else
+            {
+                player1Turn = false;
+                player1Board.GetComponent<Image>().enabled = false;
+                player2Turn = true;
+                player2Board.GetComponent<Image>().enabled = true;
+                battleshipGrids.SetActive(false);
+                gameUIPanel.SetActive(false);
+                switchPanel.SetActive(true);
+                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+            }
+        }
     }
 }
