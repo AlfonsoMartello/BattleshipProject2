@@ -83,7 +83,12 @@ public class CanvasScript : MonoBehaviour
         if (AIdif != 0)
         {
             switchButton.gameObject.SetActive(false);
+            foreach (var button in player1Board.GetComponentsInChildren<Button>())
+            {
+                button.interactable = false;
+            }
         }
+
         if (Team1.placeCheck == true && Team2.placeCheck == true)
         {
             startButton.interactable = true;
