@@ -81,7 +81,7 @@ public class TeamController : MonoBehaviour
             for (int i = 0; numberOfShips > i; i++)
             {
                 System.Random rnd = new System.Random();
-                int offset = (30 * rnd.Next(0, 7 - i)) + 190;
+                int offset = (30 * rnd.Next(0, 7 - i)) + 180;
                 int row = rnd.Next(0, rowTaken.Capacity);
                 while (rowTaken[row])
                 {
@@ -91,7 +91,7 @@ public class TeamController : MonoBehaviour
 
                 Ships.Add(Instantiate(ship, this.transform.position, Quaternion.identity, this.transform).GetComponent<ShipController>());
                 Ships[i].transform.position = new Vector3(this.transform.position.x + offset,
-                                                          this.transform.position.y - 70 + row * 30,
+                                                          this.transform.position.y - 20 + row * 30,
                                                           this.transform.position.z);
                 Ships[i].SetShipLength(i + 1);
                 Ships[i].shipTeam = team;
