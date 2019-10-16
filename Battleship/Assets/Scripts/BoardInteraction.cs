@@ -50,9 +50,9 @@ public class BoardInteraction : MonoBehaviour
     {
         if (player1Turn) //Actually player 2's turn
         {
-            for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+            for (int i = 0; i < spacesAvailableBoard1.Length; i++)
             {
-                if(spacesAvailableBoard1[i].image.sprite == null)
+                if (spacesAvailableBoard1[i].image.sprite == null)
                 {
                     spacesAvailableBoard1[i].interactable = true;
                 }
@@ -110,7 +110,7 @@ public class BoardInteraction : MonoBehaviour
     */
     public void YesButtonReset()
     {
-        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+        for (int i = 0; i < spacesAvailableBoard1.Length; i++)
         {
             spacesAvailableBoard1[i].interactable = true;
             spacesAvailableBoard1[i].GetComponent<Image>().sprite = null;
@@ -140,7 +140,7 @@ public class BoardInteraction : MonoBehaviour
         }
         else if (Team2.aiDifficulty == 2)
         {
-            AInormalGame();
+
         }
         else if (Team2.aiDifficulty == 3)
         {
@@ -160,7 +160,7 @@ public class BoardInteraction : MonoBehaviour
     */
     public void ConfirmButtonInteractableOff()
     {
-        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+        for (int i = 0; i < spacesAvailableBoard1.Length; i++)
         {
             spacesAvailableBoard1[i].interactable = false;
             spacesAvailableBoard2[i].interactable = false;
@@ -176,7 +176,7 @@ public class BoardInteraction : MonoBehaviour
     */
     public void StartButtonCommencePlay()
     {
-        for(int i = 0; i < spacesAvailableBoard1.Length; i++)
+        for (int i = 0; i < spacesAvailableBoard1.Length; i++)
         {
             spacesAvailableBoard1[i].interactable = true;
             player1Board.GetComponent<Image>().enabled = true;
@@ -327,10 +327,18 @@ public class BoardInteraction : MonoBehaviour
     }
     public void AIeasyGame()
     {
+        bool hasPlayed1 = false, hasPlayed2 = false;
 
-    }
-    public void AInormalGame()
-    {
+        if (player1Turn) //actually player 2 turn
+        {
+            //THIS LINE IS NEW
+            List<int> listNumbers = new List<int>();
+            int randomIndex;
+            do
+            {
+                randomIndex = Random.Range(0, spacesAvailableBoard1.Length - 1);
+            } while (listNumbers.Contains(randomIndex));
+            listNumbers.Add(randomIndex);
 
     }
     public void AIhardGame()
