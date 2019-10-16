@@ -5,6 +5,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+* @class description: Controls ScoreBoardPanel view
+*/
 public class ScoreBoardPanel : MonoBehaviour
 {
 
@@ -12,7 +15,13 @@ public class ScoreBoardPanel : MonoBehaviour
     public List<GameObject> ScoreList;
     private ScoreData scoreData;
     private int numShips = 1;
-    // Start is called before the first frame update
+
+    /**
+    * @pre None.
+    * @post Adds event listener for dropdown and renders the list with 1 ship selected.
+    * @param None.
+    * @return None.
+    */
     void Start()
     {
         numShipsSelector.onValueChanged.AddListener(onNumShipsSelection);
@@ -21,12 +30,12 @@ public class ScoreBoardPanel : MonoBehaviour
         updateListView();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    /**
+    * @pre loadData has been called.
+    * @post Displays top 5 scores based to score board view.
+    * @param None.
+    * @return None.
+    */
     private void updateListView()
     {
         List<ScoreEntry> scoreEntries = scoreData.GetScoresByNumShips(numShips);
@@ -52,12 +61,24 @@ public class ScoreBoardPanel : MonoBehaviour
         } 
     }
 
+    /**
+    * @pre View is rendered.
+    * @post Reloads list view with the newly selected number of ships
+    * @param Number of ships choice selection from the view.
+    * @return None.
+    */
     private void onNumShipsSelection(int choice)
     {
         numShips = choice + 1;
         updateListView();
     }
 
+    /**
+    * @pre None.
+    * @post Reads saved games data from file and stores it in scoreData.
+    * @param None.
+    * @return None.
+    */
     private void loadData()
     {
         BinaryFormatter bf = new BinaryFormatter();
