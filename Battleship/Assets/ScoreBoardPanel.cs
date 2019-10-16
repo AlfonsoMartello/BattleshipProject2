@@ -36,9 +36,14 @@ public class ScoreBoardPanel : MonoBehaviour
         {
             if (i < scoreEntries.Capacity)
             {
-                ScoreList[i].GetComponentsInChildren<Text>()[0].text = scoreEntries[i].name;
-                ScoreList[i].GetComponentsInChildren<Text>()[1].text = scoreEntries[i].score.ToString();
-            } else
+                try // Pay no attention to catching this out of bounds exception
+                {
+                    ScoreList[i].GetComponentsInChildren<Text>()[0].text = scoreEntries[i].name;
+                    ScoreList[i].GetComponentsInChildren<Text>()[1].text = scoreEntries[i].score.ToString();
+                }
+                catch {}
+            }
+            else
             {
                 ScoreList[i].GetComponentsInChildren<Text>()[0].text = "";
                 ScoreList[i].GetComponentsInChildren<Text>()[1].text = "";
@@ -56,6 +61,7 @@ public class ScoreBoardPanel : MonoBehaviour
     private void loadData()
     {
         BinaryFormatter bf = new BinaryFormatter();
+        scoreData = new ScoreData();
         if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
         {
             FileStream readFile = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);

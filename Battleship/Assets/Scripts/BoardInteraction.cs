@@ -463,7 +463,7 @@ public class BoardInteraction : MonoBehaviour
             }
         }
     }
-        public void AIhardGame()
+    public void AIhardGame()
         {
             bool hasPlayed1 = false, hasPlayed2 = false;
 
