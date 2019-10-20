@@ -618,7 +618,7 @@ public class BoardInteraction : MonoBehaviour
                 else
                 {
                     Debug.Log("e - shot was already fired choose again");
-                    while (listNumbers.Contains(randomIndex))
+                    while (totalShots.Contains(randomIndex))
                     {
                         Debug.Log("e1 - choose random index");
                         randomIndex = Random.Range(0, spacesAvailableBoard1.Length - 1);
@@ -693,7 +693,7 @@ public class BoardInteraction : MonoBehaviour
                     else
                     {
                         Debug.Log("l - shot has been fired before");
-                        while (listNumbers.Contains(randomIndex))
+                        while (totalShots.Contains(randomIndex))
                         {
                             Debug.Log("l2 - choose random again");
                             randomIndex = Random.Range(0, spacesAvailableBoard1.Length - 1);
@@ -780,7 +780,7 @@ public class BoardInteraction : MonoBehaviour
                             else
                             {
                                 Debug.Log("t - all array shots fired & ship is full - shoot random");
-                                while (listNumbers.Contains(randomIndex))
+                                while (totalShots.Contains(randomIndex))
                                 {
                                     Debug.Log("t2 - chose random number");
                                     randomIndex = Random.Range(0, spacesAvailableBoard1.Length - 1);
