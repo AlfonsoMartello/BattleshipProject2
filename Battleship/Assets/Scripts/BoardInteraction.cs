@@ -192,13 +192,6 @@ public class BoardInteraction : MonoBehaviour
         }
     }
 
-    /**
-    * @pre: FireButtonLockIn() has ran and the user selected to fight another player.
-    * @post: Manages the flow of the game, letting the player whose turn it is fire
-    * and then switiching turns (and which board can be interacted with).
-    * @param: None.
-    * @return: None.
-    */
     public void playerGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
@@ -338,13 +331,6 @@ public class BoardInteraction : MonoBehaviour
         }
     }
 
-    /**
-    * @pre: FireButtonLockIn() has ran and the user selected to fight the easy AI.
-    * @post: Manages the flow of the game, letting the player fire at the AI, and then letting the AI fire at the player depending on whose turn it is.
-    * The AI fires randomly on its turn.
-    * @param: None.
-    * @return: None.
-    */
     public void AIeasyGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
@@ -582,13 +568,6 @@ public class BoardInteraction : MonoBehaviour
         return nextShot;
     }
 
-    /**
-    * @pre: FireButtonLockIn() has ran and the user selected to fight the normal AI.
-    * @post: Manages the flow of the game, letting the player fire at the AI, and then letting the AI fire at the player depending on whose turn it is.
-    * The AI fires randomly until it hits a ship, then it fires orthogonally adjacent spaces until the ship is sunk.
-    * @param: None.
-    * @return: None.
-    */
     public void AInormalGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
@@ -619,7 +598,7 @@ public class BoardInteraction : MonoBehaviour
                         spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[0];
                         hasPlayed1 = true;
 
-                        
+
                     }
 
                     else
@@ -670,7 +649,7 @@ public class BoardInteraction : MonoBehaviour
 
                 }
 
-                
+
             }
 
             else
@@ -768,6 +747,7 @@ public class BoardInteraction : MonoBehaviour
                             if (totalShots.Contains(targetArray[currentDirection]) == false)
                             {
                                 Debug.Log("q - shot opposite target array direction");
+                                Debug.Log(currentDirection);
                                 if (spacesAvailableBoard1[targetArray[currentDirection]].GetComponent<buttonController>().target == null) //if the selected button does not contain a ship part. target is an instance of ShipPartController.
                                 {
                                     Debug.Log("r - miss");
@@ -830,7 +810,7 @@ public class BoardInteraction : MonoBehaviour
                                 totalShots.Add(randomIndex);
                             }
 
-                                
+
                         }
                         else
                         {
@@ -845,6 +825,7 @@ public class BoardInteraction : MonoBehaviour
                                     hasPlayed1 = true;
 
                                     currentDirection = currentDirection + 2;
+                                    Debug.Log(currentDirection);
                                 }
 
                                 else
@@ -864,18 +845,30 @@ public class BoardInteraction : MonoBehaviour
                             }
                             else
                             {
-                                Debug.Log("y - shot has been shot before - pick again - random index");
-                                while (listNumbers.Contains(randomIndex))
-                                {
-                                    Debug.Log("y1 - choose random number");
-                                    randomIndex = Random.Range(0, spacesAvailableBoard1.Length - 1);
-                                }
+                                Debug.Log("y - shot has been shot before - pick again opposite direction");
+                                Debug.Log(currentDirection);
 
-                                if (spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target == null) //if the selected button does not contain a ship part. target is an instance of ShipPartController.
+                                currentDirection = currentDirection + 2;
+
+                                while (targetArray[currentDirection] == -1)
+                                {
+                                    Debug.Log("y1 - check target array for next valid shot");
+                                    currentDirection++;
+                                }
+                                if (spacesAvailableBoard1[targetArray[currentDirection]].GetComponent<buttonController>().target == null) //if the selected button does not contain a ship part. target is an instance of ShipPartController.
                                 {
                                     Debug.Log("y2 - miss");
-                                    spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[0];
+                                    spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[0];
                                     hasPlayed1 = true;
+
+                                    currentDirection++;
+
+
+                                    while (targetArray[currentDirection] == -1)
+                                    {
+                                        Debug.Log("y3 - check target array for next valid shot");
+                                        currentDirection++;
+                                    }
 
 
                                 }
@@ -883,24 +876,26 @@ public class BoardInteraction : MonoBehaviour
                                 else
                                 {
                                     Debug.Log("z - hit");
-                                    spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
-                                    spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[1];
+                                    shotsIndex++;
+                                    currentShip.Add(targetArray[currentDirection]);
+                                    previousHitIndex = targetArray[currentDirection];
+
+                                    spacesAvailableBoard1[targetArray[currentDirection]].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
+                                    spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[1];
                                     hasPlayed1 = true;
 
-                                    previousHitIndex = randomIndex;
-                                    targetArray = CheckEdges(previousHitIndex);
-                                    currentShip.Add(previousHitIndex);
                                 }
+                                totalShots.Add(targetArray[currentDirection]);
 
-                                totalShots.Add(randomIndex);
                             }
-                           
+
                         }
 
                     }
                     else
                     {
                         Debug.Log("aa - shoot at target shot");
+                        Debug.Log(currentDirection);
                         if (totalShots.Contains(targetArray[currentDirection]) == false)
                         {
                             Debug.Log("bb - shot has NOT been shot at before");
@@ -909,6 +904,8 @@ public class BoardInteraction : MonoBehaviour
                                 Debug.Log("cc - miss");
                                 spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[0];
                                 hasPlayed1 = true;
+
+                                currentDirection++;
 
                                 while (targetArray[currentDirection] == -1)
                                 {
@@ -937,6 +934,7 @@ public class BoardInteraction : MonoBehaviour
                         else
                         {
                             Debug.Log("ee - shot has been shot at before - got to next target valid target");
+                            Debug.Log(currentDirection);
                             while (targetArray[currentDirection] == -1)
                             {
                                 Debug.Log("ee1 - check target array for next valid shot");
@@ -973,7 +971,7 @@ public class BoardInteraction : MonoBehaviour
 
                         }
 
-                        
+
                     }
                 }
 
@@ -1091,13 +1089,6 @@ public class BoardInteraction : MonoBehaviour
         }
     }
 
-    /**
-    * @pre: FireButtonLockIn() has ran and the user selected to fight the hard AI.
-    * @post: Manages the flow of the game, letting the player fire at the AI, and then letting the AI fire at the player depending on whose turn it is.
-    * The AI hits the players ship every time it fires.
-    * @param: None.
-    * @return: None.
-    */
     public void AIhardGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
