@@ -189,6 +189,13 @@ public class BoardInteraction : MonoBehaviour
         }
     }
 
+    /**
+    * @pre: FireButtonLockIn() has ran and the user selected to fight another player.
+    * @post: Manages the flow of the game, letting the player whose turn it is fire
+    * and then switiching turns (and which board can be interacted with).
+    * @param: None.
+    * @return: None.
+    */
     public void playerGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
@@ -328,6 +335,13 @@ public class BoardInteraction : MonoBehaviour
         }
     }
 
+    /**
+    * @pre: FireButtonLockIn() has ran and the user selected to fight the easy AI.
+    * @post: Manages the flow of the game, letting the player fire at the AI, and then letting the AI fire at the player depending on whose turn it is.
+    * The AI fires randomly on its turn.
+    * @param: None.
+    * @return: None.
+    */
     public void AIeasyGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
@@ -565,6 +579,13 @@ public class BoardInteraction : MonoBehaviour
         return nextShot;
     }
 
+    /**
+    * @pre: FireButtonLockIn() has ran and the user selected to fight the normal AI.
+    * @post: Manages the flow of the game, letting the player fire at the AI, and then letting the AI fire at the player depending on whose turn it is.
+    * The AI fires randomly until it hits a ship, then it fires orthogonally adjacent spaces until the ship is sunk.
+    * @param: None.
+    * @return: None.
+    */
     public void AInormalGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
@@ -859,6 +880,13 @@ public class BoardInteraction : MonoBehaviour
         }
     }
 
+    /**
+    * @pre: FireButtonLockIn() has ran and the user selected to fight the hard AI.
+    * @post: Manages the flow of the game, letting the player fire at the AI, and then letting the AI fire at the player depending on whose turn it is.
+    * The AI hits the players ship every time it fires.
+    * @param: None.
+    * @return: None.
+    */
     public void AIhardGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
