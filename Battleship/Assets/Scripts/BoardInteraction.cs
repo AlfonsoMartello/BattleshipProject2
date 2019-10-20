@@ -946,6 +946,8 @@ public class BoardInteraction : MonoBehaviour
                                 spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[0];
                                 hasPlayed1 = true;
 
+                                currentDirection++;
+
                                 while (targetArray[currentDirection] == -1)
                                 {
                                     Debug.Log("ff1 - check target array for next valid shot");
