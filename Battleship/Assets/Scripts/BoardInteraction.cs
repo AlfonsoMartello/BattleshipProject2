@@ -28,6 +28,7 @@ public class BoardInteraction : MonoBehaviour
 
     public List<int> totalShots = new List<int>();
     public int randomIndex;
+    public int listsize = -1;
 
     /**
     * @pre: Start is called before the first frame update.
@@ -518,7 +519,7 @@ public class BoardInteraction : MonoBehaviour
         int nextShot = 0;
         if (currentDirection == 0)
         {
-            if ((index + 1) % 8 == 0)
+            if (((index + 1) % 8 == 0) && ((index + 1) > 63))
             {
                 nextShot = -1;
             }
@@ -543,7 +544,7 @@ public class BoardInteraction : MonoBehaviour
 
         else if (currentDirection == 2)
         {
-            if ((index - 1) % 8 == 0)
+            if (((index - 1) % 8 == 7) && ((index - 1) < 0))
             {
                 nextShot = -1;
             }
@@ -575,6 +576,11 @@ public class BoardInteraction : MonoBehaviour
         if (player1Turn) //actually player 2 turn
         {
             Debug.Log("We made it!");
+            //if(listsize > -1)
+            //{
+            //    Debug.Log(totalShots[listsize]);
+            //}
+            
 
             List<int> listNumbers = new List<int>();
 
@@ -598,6 +604,9 @@ public class BoardInteraction : MonoBehaviour
                         spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[0];
                         hasPlayed1 = true;
 
+                        listsize ++ ;
+                        
+
 
                     }
 
@@ -608,9 +617,12 @@ public class BoardInteraction : MonoBehaviour
                         spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[1];
                         hasPlayed1 = true;
 
+                        listsize++;
+
                         previousHitIndex = randomIndex;
                         targetArray = CheckEdges(previousHitIndex);
                         currentShip.Add(previousHitIndex);
+                        shotsIndex++;
                     }
 
                     totalShots.Add(randomIndex);
@@ -629,7 +641,7 @@ public class BoardInteraction : MonoBehaviour
                         Debug.Log("f - miss");
                         spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[0];
                         hasPlayed1 = true;
-
+                        listsize++;
 
                     }
 
@@ -639,10 +651,12 @@ public class BoardInteraction : MonoBehaviour
                         spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                         spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[1];
                         hasPlayed1 = true;
+                        listsize++;
 
                         previousHitIndex = randomIndex;
                         targetArray = CheckEdges(previousHitIndex);
                         currentShip.Add(previousHitIndex);
+                        shotsIndex++;
                     }
 
                     totalShots.Add(randomIndex);
@@ -660,7 +674,7 @@ public class BoardInteraction : MonoBehaviour
                     Debug.Log("i - all directions shot at - random shooting");
                     currentDirection = 0;
                     previousHitIndex = -1;
-                    currentShip.RemoveRange(0, shotsIndex);
+                    currentShip.Clear();
                     shotsIndex = 0;
 
 
@@ -672,6 +686,7 @@ public class BoardInteraction : MonoBehaviour
                             Debug.Log("j1 - miss");
                             spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[0];
                             hasPlayed1 = true;
+                            listsize++;
 
 
                         }
@@ -682,10 +697,12 @@ public class BoardInteraction : MonoBehaviour
                             spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                             spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[1];
                             hasPlayed1 = true;
+                            listsize++;
 
                             previousHitIndex = randomIndex;
                             targetArray = CheckEdges(previousHitIndex);
                             currentShip.Add(previousHitIndex);
+                            shotsIndex++;
                         }
 
                         totalShots.Add(randomIndex);
@@ -699,11 +716,16 @@ public class BoardInteraction : MonoBehaviour
                             randomIndex = Random.Range(0, spacesAvailableBoard1.Length - 1);
                         }
 
+                        currentShip.Clear();
+                        shotsIndex = 0;
+
                         if (spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target == null) //if the selected button does not contain a ship part. target is an instance of ShipPartController.
                         {
                             Debug.Log("l3 - miss");
                             spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[0];
                             hasPlayed1 = true;
+                            listsize++;
+
 
 
                         }
@@ -714,10 +736,13 @@ public class BoardInteraction : MonoBehaviour
                             spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                             spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[1];
                             hasPlayed1 = true;
+                            listsize++;
+
 
                             previousHitIndex = randomIndex;
                             targetArray = CheckEdges(previousHitIndex);
                             currentShip.Add(previousHitIndex);
+                            shotsIndex++;
                         }
 
                         totalShots.Add(randomIndex);
@@ -737,6 +762,7 @@ public class BoardInteraction : MonoBehaviour
                     if (currentShip.Contains(targetArray[currentDirection]))
                     {
                         Debug.Log("o - previous shot was in target array - shot next index over");
+                        Debug.Log(currentDirection);
                         if (CheckShot(previousHitIndex) == -1)
                         {
                             Debug.Log("p - next index over is not valid");
@@ -753,11 +779,12 @@ public class BoardInteraction : MonoBehaviour
                                     Debug.Log("r - miss");
                                     spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[0];
                                     hasPlayed1 = true;
+                                    listsize++;
 
-                                    currentDirection = 0;
-                                    previousHitIndex = -1;
-                                    currentShip.RemoveRange(0, shotsIndex);
-                                    shotsIndex = 0;
+                                    //currentDirection = 0;
+                                    //previousHitIndex = -1;
+                                    //currentShip.Clear();
+                                    //shotsIndex = 0;
 
 
                                 }
@@ -765,13 +792,16 @@ public class BoardInteraction : MonoBehaviour
                                 else
                                 {
                                     Debug.Log("s - hit");
-                                    shotsIndex++;
-                                    currentShip.Add(targetArray[currentDirection]);
-                                    previousHitIndex = targetArray[currentDirection];
+                                    
 
                                     spacesAvailableBoard1[targetArray[currentDirection]].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                                     spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[1];
                                     hasPlayed1 = true;
+                                    listsize++;
+
+                                    shotsIndex++;
+                                    currentShip.Add(targetArray[currentDirection]);
+                                    previousHitIndex = targetArray[currentDirection];
 
                                 }
                                 totalShots.Add(targetArray[currentDirection]);
@@ -786,11 +816,15 @@ public class BoardInteraction : MonoBehaviour
                                     randomIndex = Random.Range(0, spacesAvailableBoard1.Length - 1);
                                 }
 
+                                currentShip.Clear();
+                                shotsIndex = 0;
+
                                 if (spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target == null) //if the selected button does not contain a ship part. target is an instance of ShipPartController.
                                 {
                                     Debug.Log("t3 - miss");
                                     spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[0];
                                     hasPlayed1 = true;
+                                    listsize++;
 
 
                                 }
@@ -801,10 +835,12 @@ public class BoardInteraction : MonoBehaviour
                                     spacesAvailableBoard1[randomIndex].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                                     spacesAvailableBoard1[randomIndex].image.sprite = onClickIcons[1];
                                     hasPlayed1 = true;
+                                    listsize++;
 
                                     previousHitIndex = randomIndex;
                                     targetArray = CheckEdges(previousHitIndex);
                                     currentShip.Add(previousHitIndex);
+                                    shotsIndex++;
                                 }
 
                                 totalShots.Add(randomIndex);
@@ -815,6 +851,10 @@ public class BoardInteraction : MonoBehaviour
                         else
                         {
                             Debug.Log("v - target array was shot at and next shot is valid");
+                            //Debug.Log(currentShip[shotsIndex]);
+                            Debug.Log(targetArray[currentDirection]);
+                            Debug.Log(currentDirection);
+
                             if (totalShots.Contains((CheckShot(previousHitIndex))) == false)
                             {
                                 Debug.Log("v1 - shot has NOT been shot before");
@@ -823,6 +863,8 @@ public class BoardInteraction : MonoBehaviour
                                     Debug.Log("w - miss");
                                     spacesAvailableBoard1[CheckShot(previousHitIndex)].image.sprite = onClickIcons[0];
                                     hasPlayed1 = true;
+                                    listsize++;
+                                    totalShots.Add((CheckShot(previousHitIndex)));
 
                                     currentDirection = currentDirection + 2;
                                     Debug.Log(currentDirection);
@@ -831,22 +873,26 @@ public class BoardInteraction : MonoBehaviour
                                 else
                                 {
                                     Debug.Log("x - hit");
-                                    shotsIndex++;
-                                    currentShip.Add(CheckShot(previousHitIndex));
-
 
                                     spacesAvailableBoard1[CheckShot(previousHitIndex)].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                                     spacesAvailableBoard1[CheckShot(previousHitIndex)].image.sprite = onClickIcons[1];
 
+                                    
+                                    shotsIndex++;
+                                    currentShip.Add(CheckShot(previousHitIndex));
+                                    totalShots.Add((CheckShot(previousHitIndex)));
                                     previousHitIndex = CheckShot(previousHitIndex);
+
                                     hasPlayed1 = true;
+                                    listsize++;
                                 }
-                                totalShots.Add((CheckShot(previousHitIndex)));
+                                
                             }
                             else
                             {
                                 Debug.Log("y - shot has been shot before - pick again opposite direction");
                                 Debug.Log(currentDirection);
+                                //Debug.Log(currentShip[shotsIndex]);
 
                                 currentDirection = currentDirection + 2;
 
@@ -860,6 +906,7 @@ public class BoardInteraction : MonoBehaviour
                                     Debug.Log("y2 - miss");
                                     spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[0];
                                     hasPlayed1 = true;
+                                    listsize++;
 
                                     currentDirection++;
 
@@ -876,13 +923,16 @@ public class BoardInteraction : MonoBehaviour
                                 else
                                 {
                                     Debug.Log("z - hit");
+                                   
+                                    spacesAvailableBoard1[targetArray[currentDirection]].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
+                                    spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[1];
+
                                     shotsIndex++;
                                     currentShip.Add(targetArray[currentDirection]);
                                     previousHitIndex = targetArray[currentDirection];
 
-                                    spacesAvailableBoard1[targetArray[currentDirection]].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
-                                    spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[1];
                                     hasPlayed1 = true;
+                                    listsize++;
 
                                 }
                                 totalShots.Add(targetArray[currentDirection]);
@@ -896,6 +946,9 @@ public class BoardInteraction : MonoBehaviour
                     {
                         Debug.Log("aa - shoot at target shot");
                         Debug.Log(currentDirection);
+                        //Debug.Log(currentShip[shotsIndex]);
+                        Debug.Log(targetArray[currentDirection]);
+
                         if (totalShots.Contains(targetArray[currentDirection]) == false)
                         {
                             Debug.Log("bb - shot has NOT been shot at before");
@@ -904,6 +957,8 @@ public class BoardInteraction : MonoBehaviour
                                 Debug.Log("cc - miss");
                                 spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[0];
                                 hasPlayed1 = true;
+                                listsize++;
+                                totalShots.Add(targetArray[currentDirection]);
 
                                 currentDirection++;
 
@@ -919,16 +974,22 @@ public class BoardInteraction : MonoBehaviour
                             else
                             {
                                 Debug.Log("dd - hit");
-                                shotsIndex++;
-                                currentShip.Add(targetArray[currentDirection]);
-                                previousHitIndex = targetArray[currentDirection];
+                               
 
                                 spacesAvailableBoard1[targetArray[currentDirection]].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                                 spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[1];
+
+                                shotsIndex++;
+                                currentShip.Add(targetArray[currentDirection]);
+                                
+                                totalShots.Add(targetArray[currentDirection]);
+                                previousHitIndex = targetArray[currentDirection];
+
                                 hasPlayed1 = true;
+                                listsize++;
 
                             }
-                            totalShots.Add(targetArray[currentDirection]);
+                            
 
                         }
                         else
@@ -945,6 +1006,7 @@ public class BoardInteraction : MonoBehaviour
                                 Debug.Log("ff - miss");
                                 spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[0];
                                 hasPlayed1 = true;
+                                listsize++;
 
                                 currentDirection++;
 
@@ -960,13 +1022,16 @@ public class BoardInteraction : MonoBehaviour
                             else
                             {
                                 Debug.Log("gg - hit");
-                                shotsIndex++;
-                                currentShip.Add(targetArray[currentDirection]);
-                                previousHitIndex = targetArray[currentDirection];
+                                
 
                                 spacesAvailableBoard1[targetArray[currentDirection]].GetComponent<buttonController>().target.Hit(); //sets the ShipPartController as hit and checks if the player has lost
                                 spacesAvailableBoard1[targetArray[currentDirection]].image.sprite = onClickIcons[1];
                                 hasPlayed1 = true;
+                                listsize++;
+
+                                shotsIndex++;
+                                currentShip.Add(targetArray[currentDirection]);
+                                previousHitIndex = targetArray[currentDirection];
 
                             }
                             totalShots.Add(targetArray[currentDirection]);
