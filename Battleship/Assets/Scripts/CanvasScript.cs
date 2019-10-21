@@ -242,30 +242,53 @@ public class CanvasScript : MonoBehaviour
     */
     private void DisplayShips()
     {
-        if (BattleshipBoard.player1Turn)
+        if (AIdif == 0) //two people are playing
         {
-            if (showShips == false)
+            if (BattleshipBoard.player1Turn)
             {
-                Team2.appearShips();
-                showShips = true;
+                if (showShips == false)
+                {
+                    Team2.appearShips();
+                    showShips = true;
+                }
+                else
+                {
+                    Team2.disappearShips();
+                    showShips = false;
+                }
             }
-            else
+            else if (BattleshipBoard.player2Turn)
             {
-                Team2.disappearShips();
-                showShips = false;
+                if (showShips == false)
+                {
+                    Team1.appearShips();
+                    showShips = true;
+                }
+                else
+                {
+                    Team1.disappearShips();
+                    showShips = false;
+                }
             }
         }
-        else if (BattleshipBoard.player2Turn)
+        else //the AI is playing
         {
-            if (showShips == false)
+            if (BattleshipBoard.player1Turn)//on the AI's turn
             {
-                Team1.appearShips();
-                showShips = true;
+                //do nothing, the player can't cheat and see where the AI's ships are placed.
             }
-            else
+            else if (BattleshipBoard.player2Turn)
             {
-                Team1.disappearShips();
-                showShips = false;
+                if (showShips == false)
+                {
+                    Team1.appearShips();
+                    showShips = true;
+                }
+                else
+                {
+                    Team1.disappearShips();
+                    showShips = false;
+                }
             }
         }
     }
