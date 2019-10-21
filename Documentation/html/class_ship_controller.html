@@ -116,6 +116,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a07fd806c2a997f0acfd9f3eb29d35ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dcc27573d0c57fad04008d47c14d5b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#a6dcc27573d0c57fad04008d47c14d5b4">checkParts</a> ()</td></tr>
 <tr class="separator:a6dcc27573d0c57fad04008d47c14d5b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ef712325201d1375678c0bb28ba1f5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#a8ef712325201d1375678c0bb28ba1f5c">snapToGrid</a> ()</td></tr>
+<tr class="separator:a8ef712325201d1375678c0bb28ba1f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2ee02504fd655f744b12cc383e83c64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#ac2ee02504fd655f744b12cc383e83c64">disappear</a> ()</td></tr>
 <tr class="separator:ac2ee02504fd655f744b12cc383e83c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91965bca38605ac7f926701d79feab2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#a91965bca38605ac7f926701d79feab2f">appear</a> ()</td></tr>
@@ -124,6 +126,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad2ef31f253c2f3f7dc4c89ff747682f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a264aa9f5b5210ddf3a96622b6c004e8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#a264aa9f5b5210ddf3a96622b6c004e8a">AttemptBond</a> ()</td></tr>
 <tr class="separator:a264aa9f5b5210ddf3a96622b6c004e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe1adfd93176cafd351f6d914488fc97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#afe1adfd93176cafd351f6d914488fc97">ForceBond</a> ()</td></tr>
+<tr class="separator:afe1adfd93176cafd351f6d914488fc97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -154,8 +158,6 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a641a1b21c56f43f5fc6a2ecff721e27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8715cd4a281f304b57a19562abb43b20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#a8715cd4a281f304b57a19562abb43b20">Spawn</a> ()</td></tr>
 <tr class="separator:a8715cd4a281f304b57a19562abb43b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ef712325201d1375678c0bb28ba1f5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship_controller.html#a8ef712325201d1375678c0bb28ba1f5c">snapToGrid</a> ()</td></tr>
-<tr class="separator:a8ef712325201d1375678c0bb28ba1f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -441,6 +443,40 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="afe1adfd93176cafd351f6d914488fc97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe1adfd93176cafd351f6d914488fc97">&#9670;&nbsp;</a></span>ForceBond()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShipController.ForceBond </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section pre"><dt>Precondition</dt><dd>Ship was placed with mouse on board. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Attempts to bond the ship to the game board in valid location </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
 <a id="ad2ef31f253c2f3f7dc4c89ff747682f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad2ef31f253c2f3f7dc4c89ff747682f5">&#9670;&nbsp;</a></span>hitCheck()</h2>
 
@@ -528,7 +564,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

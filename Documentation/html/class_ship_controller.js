@@ -8,6 +8,7 @@ var class_ship_controller =
     [ "FaceLeft", "class_ship_controller.html#a5401bbb0e4b36bbc947b703aa3403650", null ],
     [ "FaceRight", "class_ship_controller.html#a25b8cf8d7ffcf88395ad381d2d01d7ae", null ],
     [ "FaceUp", "class_ship_controller.html#a32d5ba78def3958d175cb0a8f2795564", null ],
+    [ "ForceBond", "class_ship_controller.html#afe1adfd93176cafd351f6d914488fc97", null ],
     [ "hitCheck", "class_ship_controller.html#ad2ef31f253c2f3f7dc4c89ff747682f5", null ],
     [ "SetShipLength", "class_ship_controller.html#a3d6a729c3b24840453b1cf53fda2271e", null ],
     [ "snapToGrid", "class_ship_controller.html#a8ef712325201d1375678c0bb28ba1f5c", null ],
