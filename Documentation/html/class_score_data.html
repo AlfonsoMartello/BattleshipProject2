@@ -96,8 +96,6 @@ $(document).ready(function(){initNavTree('class_score_data.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a77e512b5aec2359122e6d5b18b47b39d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_score_data.html#a77e512b5aec2359122e6d5b18b47b39d">ScoreData</a> ()</td></tr>
-<tr class="separator:a77e512b5aec2359122e6d5b18b47b39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1dc8ddd9c286faf63314bcfba624ee7"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_score_entry.html">ScoreEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_score_data.html#ac1dc8ddd9c286faf63314bcfba624ee7">GetScoresByNumShips</a> (int numShips)</td></tr>
 <tr class="separator:ac1dc8ddd9c286faf63314bcfba624ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc359c7176748799cfee4ad2dddb70e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_score_data.html#adc359c7176748799cfee4ad2dddb70e6">AddScoreByNumShips</a> (int numShips, <a class="el" href="class_score_entry.html">ScoreEntry</a> score)</td></tr>
@@ -108,32 +106,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a74d18a5c83514cf688bb5cdc0ae31646"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, List&lt; <a class="el" href="class_score_entry.html">ScoreEntry</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_score_data.html#a74d18a5c83514cf688bb5cdc0ae31646">scoreData</a></td></tr>
 <tr class="separator:a74d18a5c83514cf688bb5cdc0ae31646"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a77e512b5aec2359122e6d5b18b47b39d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77e512b5aec2359122e6d5b18b47b39d">&#9670;&nbsp;</a></span>ScoreData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ScoreData.ScoreData </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="adc359c7176748799cfee4ad2dddb70e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc359c7176748799cfee4ad2dddb70e6">&#9670;&nbsp;</a></span>AddScoreByNumShips()</h2>
@@ -168,6 +140,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section pre"><dt>Precondition</dt><dd>Object is initalized. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Adds new score entry. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Nummber</td><td>of ships and score. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
 
 </div>
 </div>
@@ -194,6 +175,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section pre"><dt>Precondition</dt><dd>Object is intialized. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>None. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>for number of ships. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_score_data.html">ScoreData</a> corresponding to the specified number of ships. </dd></dl>
 
 </div>
 </div>
