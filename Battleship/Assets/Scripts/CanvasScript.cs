@@ -65,6 +65,9 @@ public class CanvasScript : MonoBehaviour
 
         // Game Over Menu Button Listener Events.
         mainMenuButton.onClick.AddListener(RestartGame);
+
+        
+
     }
 
     /**
@@ -128,6 +131,10 @@ public class CanvasScript : MonoBehaviour
             gameOverMenu.SetActive(true);
             gameOver = true;
         }
+
+        //changing player names
+        player1WinMessage.GetComponent<Text>().text = Team1.playerName + " wins!";
+        player2WinMessage.GetComponent<Text>().text = Team2.playerName + " wins!";
     }
 
     /**

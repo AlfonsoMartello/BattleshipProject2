@@ -38,11 +38,14 @@ public class BoardInteraction : MonoBehaviour
     */
     private void Start()
     {
-
+        
+        string player1Turnstring = "It's" + " Player 2's" + " Turn";
         yesButton.onClick.AddListener(YesButtonReset);
         fireButton.onClick.AddListener(FireButtonLockIn);
         confirmButton.onClick.AddListener(ConfirmButtonInteractableOff);
         startButton.onClick.AddListener(StartButtonCommencePlay);
+        playerTurn.GetComponent<Text>().text = player1Turnstring;
+        
 
 
     }
@@ -248,7 +251,7 @@ public class BoardInteraction : MonoBehaviour
                 gameUIPanel.SetActive(false);
                 battleshipGrids.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team1.playerName + "'s turn";
                 player2Shots++;
             }
             else
@@ -260,7 +263,7 @@ public class BoardInteraction : MonoBehaviour
                 gameUIPanel.SetActive(false);
                 battleshipGrids.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 2's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team2.playerName + "'s turn";
             }
         }
 
@@ -315,7 +318,7 @@ public class BoardInteraction : MonoBehaviour
                 battleshipGrids.SetActive(false);
                 gameUIPanel.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 2's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team2.playerName+ "'s turn";
                 player1Shots++;
             }
             else
@@ -327,7 +330,7 @@ public class BoardInteraction : MonoBehaviour
                 battleshipGrids.SetActive(false);
                 gameUIPanel.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team1.playerName+ "'s turn";
             }
         }
     }
@@ -390,7 +393,7 @@ public class BoardInteraction : MonoBehaviour
                 gameUIPanel.SetActive(false);
                 battleshipGrids.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team1.playerName+ "'s turn";
                 player2Shots++;
             }
             else
@@ -402,7 +405,7 @@ public class BoardInteraction : MonoBehaviour
                 gameUIPanel.SetActive(false);
                 battleshipGrids.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 2's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team2.playerName+ "'s turn";
             }
         }
         else if (player2Turn) //actually player 1 turn
@@ -456,7 +459,7 @@ public class BoardInteraction : MonoBehaviour
                 battleshipGrids.SetActive(false);
                 gameUIPanel.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 2's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team2.playerName+ "'s turn";
                 player1Shots++;
             }
             else
@@ -468,7 +471,7 @@ public class BoardInteraction : MonoBehaviour
                 battleshipGrids.SetActive(false);
                 gameUIPanel.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team1.playerName+ "'s turn";
             }
         }
     }
@@ -1073,7 +1076,7 @@ public class BoardInteraction : MonoBehaviour
                 gameUIPanel.SetActive(false);
                 battleshipGrids.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team1.playerName+ "'s turn";
                 player2Shots++;
             }
             else
@@ -1085,7 +1088,7 @@ public class BoardInteraction : MonoBehaviour
                 gameUIPanel.SetActive(false);
                 battleshipGrids.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 2's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team2.playerName+ "'s turn";
             }
         }
         else if (player2Turn) //actually player 1 turn
@@ -1139,7 +1142,7 @@ public class BoardInteraction : MonoBehaviour
                 battleshipGrids.SetActive(false);
                 gameUIPanel.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 2's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team2.playerName+ "'s turn";
                 player1Shots++;
             }
             else
@@ -1151,10 +1154,17 @@ public class BoardInteraction : MonoBehaviour
                 battleshipGrids.SetActive(false);
                 gameUIPanel.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team1.playerName+ "'s turn";
             }
         }
     }
+
+    /**
+    * @pre Player chooses to play the AI in hard mode
+    * @post Player will have likely lost to the AI becuase it knows all of the ships locations
+    * @param None.
+    * @return None.
+    */
 
     public void AIhardGame()
     {
@@ -1212,7 +1222,7 @@ public class BoardInteraction : MonoBehaviour
                 gameUIPanel.SetActive(false);
                 battleshipGrids.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team1.playerName+ "'s turn";
                 player2Shots++;
             }
             else
@@ -1224,7 +1234,7 @@ public class BoardInteraction : MonoBehaviour
                 gameUIPanel.SetActive(false);
                 battleshipGrids.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's computer's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team2.playerName + "'s turn";
             }
         }
         else
@@ -1278,7 +1288,7 @@ public class BoardInteraction : MonoBehaviour
                 battleshipGrids.SetActive(false);
                 gameUIPanel.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's the computer's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team2.playerName+ "'s turn";
                 player1Shots++;
             }
             else
@@ -1290,7 +1300,7 @@ public class BoardInteraction : MonoBehaviour
                 battleshipGrids.SetActive(false);
                 gameUIPanel.SetActive(false);
                 switchPanel.SetActive(true);
-                playerTurn.GetComponent<Text>().text = "It's Player 1's Turn";
+                playerTurn.GetComponent<Text>().text = "It's " + Team1.playerName+ "'s turn";
             }
         }
     }
