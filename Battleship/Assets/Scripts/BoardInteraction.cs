@@ -196,6 +196,12 @@ public class BoardInteraction : MonoBehaviour
         }
     }
 
+    /**
+    * @pre: FireButtonLockIn() has ran and the player has selected to fight against another player.
+    * @post: A player, depending on whose turn it is, has fired at their opponents board and the turns (and which board is interactable) have been switched.
+    * @param: None.
+    * @return: None.
+    */
     public void playerGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
@@ -335,6 +341,13 @@ public class BoardInteraction : MonoBehaviour
         }
     }
 
+    /**
+    * @pre: FireButtonLockIn() has ran and the player has selected to fight against the easy AI.
+    * @post: On the player's turn, the player selects where on the AI's board they want to fire.
+    * On the AI's turn, the AI fires randomly at the player's board.
+    * @param: None.
+    * @return: None.
+    */
     public void AIeasyGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
@@ -475,6 +488,13 @@ public class BoardInteraction : MonoBehaviour
             }
         }
     }
+
+    /**
+    * @pre: The player has selected to play against the normal AI and it is the normal AI's turn.
+    * @post: Checks the 4 squares touching the initial hit to see if they already contain a hit, then puts their values into an array.
+    * @param: index parameter is the location of the initial hit.
+    * @return: Returns an array that tells the normal AI which squares are around the initial hit.
+    */
     public int[] CheckEdges(int index)
     {
         int[] temp = new int[4];
@@ -517,6 +537,12 @@ public class BoardInteraction : MonoBehaviour
         return temp;
     }
 
+    /**
+    * @pre: The player has selected to play against the normal AI and it is the normal AI's turn and the target array has been hit.
+    * @post: Checks to see if the square that has been shot at is in the correct place on the grid.
+    * @param: index parameter receives the location that the target array was hit at.
+    * @return: Returns an integer telling the normal AI where the next shot should be.
+    */
     public int CheckShot(int index)
     {
         int nextShot = 0;
@@ -572,6 +598,13 @@ public class BoardInteraction : MonoBehaviour
         return nextShot;
     }
 
+    /**
+    * @pre: FireButtonLockIn() has ran and the player has selected to fight against the normal AI.
+    * @post: On the player's turn, the player selects where on the AI's board they want to fire.
+    * On the AI's turn, the AI fires randomly at the player's board until it hits a ship, then it fires at orthogonally adjacent space to the most recent hit position until the ship is sunk.
+    * @param: None.
+    * @return: None.
+    */
     public void AInormalGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
@@ -1160,12 +1193,12 @@ public class BoardInteraction : MonoBehaviour
     }
 
     /**
-    * @pre Player chooses to play the AI in hard mode
-    * @post Player will have likely lost to the AI becuase it knows all of the ships locations
-    * @param None.
-    * @return None.
+    * @pre: FireButtonLockIn() has ran and the player has selected to fight against the hard AI.
+    * @post: On the player's turn, the player selects where on the AI's board they want to fire.
+    * On the AI's turn, the AI hits a ship on the player's board everytime it fires.
+    * @param: None.
+    * @return: None.
     */
-
     public void AIhardGame()
     {
         bool hasPlayed1 = false, hasPlayed2 = false;
